@@ -22,7 +22,7 @@
 
  console.log(`o ${email} foi cadastrado com sucesso`);
  console.log(` Seja bem vindo(o) ${nome}`);
-
+''
  //exercicio 2
  
  const listaComida = ["pizza", "açai", "chocolate", "macarrão", "Sorvete", "frutas"]
@@ -32,9 +32,7 @@
 
  const comidaUsuario = prompt('qual sua comida preferida?')
  console.log(comidaUsuario);
- const novaComida = listaComida.splice(2,1)
- console.log(novaComida);
- const adicionarComida = listaComida.push(comidaUsuario)
+ listaComida[2] = comidaUsuario
  console.log(listaComida);
 
  //exercício 3
