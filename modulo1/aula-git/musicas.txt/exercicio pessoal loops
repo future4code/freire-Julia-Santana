@@ -1,0 +1,73 @@
+let dentesLimpos = 0; // começoçao
+// 2 condicao de continua
+while (dentesLimpos < 32) {
+  console.log(" a quantidade de dentes limpos sao", dentesLimpos); // conjunto de acao
+  dentesLimpos = dentesLimpos + 1;
+}
+
+let estomago = 0;
+while ("estomago < 100") {
+  console.log("quero mais coxinha", estomago);
+  estomago = estomago + 10;
+}
+console.log("comi de mais", estomago);
+
+// exercicio 1
+
+let numero = 1;
+let soma = 0;
+while (numero !== 0) {
+  numero = Number(prompt("digite um numero"));
+  soma = soma + numero;
+}
+
+console.log(soma);
+
+
+ /// for
+
+ for(let i =0; i<10; i++){
+     console.log(i);
+ }
+
+ // i++ equivale a i= i+1
+
+ const numeros= [14, 67, 89, 15,23],
+
+ for(let i = 0; i<5; i++
+    const elemento = elemento[i])
+    console.log(elemento);
+
+    // exercicio 2
+
+    // escreva uma funcao, que receba um array e retorne o maior numero
+
+    function maiorNumero(array){
+        let maior = 0
+        for(let i = 0; i < Array.length; i++){
+            if(array[i] > array[i]){
+                 maior = array[i]
+                
+    // for of
+
+    const numeros= [ 1, 2, 3, 4];
+       //comeco    //condicao de continuacao e encremento
+    for(let numero of numeros) {
+        console.log(numero);// acao repetida
+
+    }
+       // exercicio
+        const listaFrase = ["oi", "sumido", "tudo", "bem", "com voce?", "saudade"]
+        // console.log(listaFrase[0], listaFrase[1], listaFrase[3]);
+
+      // utilizando laços
+      function juntarPalavras (listaFrase){
+        let mensagem = ""
+       for (let i of listaFrase){
+         mensagem = `${mensagem} + ${i}`
+       } 
+       console.log(mensagem);
+    }
+
+    console.log(listaFrase);
+
