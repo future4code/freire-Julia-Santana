@@ -27,10 +27,11 @@ function retornaArrayOrdenado(array = [50, 40, 30, 20, 10]) {
 
 
 // EXERCÍCIO 04
-function retornaNumerosPares(array = [5, 8, 4, 2, 9, 6]) {
-         const numerosPares = array / 2 === 0
-         return numerosPares
-}
+function retornaNumerosPares(){
+         const array = [5, 8, 4, 2, 9, 6]
+      const listaNumerica = array.filter(valor => valor % 2 === 0 )
+       return listaNumerica  
+      }
 console.log(retornaNumerosPares());
 
 // EXERCÍCIO 05
