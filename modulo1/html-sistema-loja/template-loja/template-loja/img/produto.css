@@ -1,0 +1,22 @@
+.nome-do-produto{
+    color:#690810;
+    text-align: center;
+    
+}
+
+input{
+    margin-right:  8px;
+}
+button{
+    /*border: 1px solid green;*/
+    background-color: rgb(110, 110, 148);
+   
+}
+
+body{
+    background-color: rgb(186, 215, 219);
+}
+input{
+    padding: 8px  ;
+    left: 10px;
+}

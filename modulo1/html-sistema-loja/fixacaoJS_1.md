@@ -12,4 +12,4 @@
     return total
       
 }
-console.log(calculaSalario()) ```
+console.log(calculaSalario()) ``` 

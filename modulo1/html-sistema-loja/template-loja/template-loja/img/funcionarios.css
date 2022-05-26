@@ -1,0 +1,13 @@
+#nome{
+    text-align: center;
+    color: rgb(155, 8, 8);
+    border-style:inset;
+}
+
+.funcionario{
+ color: rgb(228, 6, 172);
+}
+
+body{
+    background-color: rgb(238, 250, 253);
+}
