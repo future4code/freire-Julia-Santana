@@ -6,7 +6,8 @@
 
 // let salárioDiario = prompt("quanto você recebe por dia ?")
 
-// alert(você recebe { t/p } por hora).
+// alert(você recebe { horasTrabalhadas/salárioDiario } por hora).
+
 
 //     Exercício escrita de códigos
 
@@ -48,4 +49,7 @@ console.log(pergunta3, "sim")
 
 
 
-     
+
+    
+ 
+
