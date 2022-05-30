@@ -1,0 +1,37 @@
+#titulo{
+    color: rgb(245, 3, 3);
+    text-align: center;
+     border-style: groove;
+     margin: top 15px rigth 15px bottom 15px left 15px;
+     padding: 1%;
+}
+
+.foto{
+    color: rgb(230, 92, 92);
+    border-style: groove;
+}
+
+.descricao{
+    
+    color: rgb(230, 92, 92);
+    border-style: groove;
+}
+
+.preço{
+    color: rgb(230, 92, 92);
+    border-style: groove;
+}
+
+.quantidade{
+    color: rgb(230, 92, 92);
+    border-style: groove;
+
+}
+
+td{
+    padding: 8px;
+}
+
+tr{
+    left: 8px;
+}
