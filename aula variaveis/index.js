@@ -8,6 +8,7 @@
 
 // alert(você recebe { horasTrabalhadas/salárioDiario } por hora).
 
+
 //     Exercício escrita de códigos
 
 //  Resposta do exercício 1 
@@ -38,5 +39,17 @@ console.log(pergunta3, "sim")
  b = c
 
  console.log("O novo valor de a é", a) 
- console.log("O novo valor de b é", b) 
+
+
+
+
+
+
+
+
+
+
+
+    
+ 
 
