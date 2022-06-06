@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    background-color: mediumvioletred;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px ;
+
+    
+}
+.botao{
+    display: flex;
+ justify-content:flex-end;
+ justify-content: space-around
+
+
+
+}
+    
+ nav{
+    padding: 0px 20px;
+display: inline;
+justify-content: space-around
+
+
+ } 
+ 
+img{
+    width: 30px;
+    
+}
+
+.imagem{
+    width: 100px ;
+    
+}
+
+main p h4{
+    text-align: center;
+}
+footer{
+    background-color:mediumvioletred; 
+    text-align: center;
+    
+}
