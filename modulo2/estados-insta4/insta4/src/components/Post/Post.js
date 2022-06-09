@@ -49,40 +49,23 @@ class Post extends React.Component {
   }
 
   onClickCurtida = () => {
-
-  Somar = () => this.setState({ numeroCurtidas: this.state.numeroCurtidas + 1 });
-  Subtrair = () => this.setState({ numeroCurtidas: this.state.numeroCurtidas - 1 });
-  render() {
-    return (
-      <div className={styled.Post}>
-        <p className={styled.paragraph}>{this.state.numeroCurtidas}</p>
-        <button className={styled.button} onClickCurtida={this.increment}>
-          +
-        </button>
-        <button className={styled.button} onClickCurtida={this.decrement}>
-          -
-        </button>
-      </div>
-    console.log('Curtiu!')
-    );
-  }
+   console.log('curtiu')
 }
 
-}
 
 
   onClickComentario = () => {
     this.setState({
       comentando: !this.state.comentando
     })
-  }
+  };
 
   aoEnviarComentario = () => {
     this.setState({
       comentando: false,
       numeroComentarios: this.state.numeroComentarios + 1
     })
-  }
+  };
 
   render() {
     let iconeCurtida
@@ -97,7 +80,7 @@ class Post extends React.Component {
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
-    }
+    };
 
     return <PostContainer>
       <PostHeader>
