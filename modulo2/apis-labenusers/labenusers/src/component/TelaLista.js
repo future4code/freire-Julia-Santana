@@ -69,6 +69,7 @@ export default class Api extends React.Component {
             {" "}
             deletar{" "}
           </button>
+          <button onClick = {() => this.props.urlPlaylist( this.props.playlist.url)}> Ver detalhes da Playlist </button>
         </CardUsuario>
       );
     });

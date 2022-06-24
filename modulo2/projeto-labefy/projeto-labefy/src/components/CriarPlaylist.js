@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 
-export default class Playlist extends React.Component{
+export default class CriarPlaylist extends React.Component{
 
     state = {
         nome:""
@@ -14,7 +14,7 @@ export default class Playlist extends React.Component{
     };
 
 
-    criarPlaylist = ()=>{
+    CriarPlaylist = ()=>{
         const url ="https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
 
 
@@ -42,15 +42,20 @@ export default class Playlist extends React.Component{
         return (
             <div className="Playlist">
                <h1> Criar Playlist </h1>
-               <button> Olhar minha Playlist </button>
-               <setion>
-                <input>
+              <div>
+                   {this.mudarTela}
+               </div>
+               <section>
+                <input
                 value ={this.state.nome}
-                onchange={this.onChangeName}
+                onChange={this.onChangeName}
                 placeholder="Digite o nome da sua playlist"
-                </input>
-               </setion>
+                />
+                <button onClick={this.CriarPlaylist}>Criar Playlist </button>
+               </section>
+               <br/>
+               <button onClick ={this.props.mudarTela}> Olhar minha Playlist  </button>
             </div>
-        )
-    }
+        );
+    };
 }

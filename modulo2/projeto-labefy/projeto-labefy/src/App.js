@@ -1,6 +1,8 @@
 import React from 'react';
 import CriarPlaylist from './components/CriarPlaylist';
 import TelaDaPlaylist from './components/TelaDaPlaylist';
+import DetalhesPlaylist from './components/DetalhesPlaylist';
+import AdicionaMusica from './components/AdicionarMusica';
 
 
 
@@ -9,6 +11,13 @@ import TelaDaPlaylist from './components/TelaDaPlaylist';
       telaAtual:"Criar"
     };
 
+    detalhesPlaylist = (url)=> {
+      this.setState ({currentScreen:"detail", urlPlaylist:url })
+   }
+   adicionarMusica = (id)=> {
+    this.setState ({musicaid:id })
+ }
+
     trocarTela = ()=>{
       switch (this.state.telaAtual) {
           case "Criar":
@@ -16,7 +25,11 @@ import TelaDaPlaylist from './components/TelaDaPlaylist';
         return <CriarPlaylist mudarTela = {this.irParaTelaDaPlaylist}/>
            case "lista":
       
-        return <TelaDaPlaylist mudarTela = {this.irParaCriarPlaylist}/>
+        return <TelaDaPlaylist mudarTela = {this.irParaDetalhesPlaylist} url={this.state.urlPlaylist}/>
+        case "detalhes":
+          return <DetalhesPlaylist mudarTela = {this.AdicionaMusica} />
+          case "adicionar":
+          return <AdicionaMusica mudarTela = {this.irParaCriarPlaylist}/>
           default:
         return <div> Tela não encontrada </div>
 
@@ -44,4 +57,5 @@ import TelaDaPlaylist from './components/TelaDaPlaylist';
   );
 };
   }
+
 
