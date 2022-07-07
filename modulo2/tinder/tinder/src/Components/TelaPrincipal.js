@@ -1,68 +1,85 @@
 import React, {useEffect, useState} from "react";
-import axios from 'axios'
+import axios from 'axios';
+import styled from 'styled-components'
 
 
+const div = styled.div`
+    padding: 20px 20px 0px;
+    display: flex;
+     flex-direction: column;
+     flex: 1 1 0%;
+    -moz-box-pack: end;
+      justify-content: flex-end;
+`
+const img = styled.img `
+     width: 100%;
+     display: block;
+     z-index: 1;
+`
 
 export default function TelaPrincipal(){
 
     const [profile, setProfile] = useState({})
     const [limpar, setLimpar] = useState([])
+    const [click, setclick] = useState (undefined)
+    
    
 
-    const pegarDados = ()=>{
-        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Julia/person")
+    function pegarDados (){
+        axios.get("https:us-central1-missao-newton.cloudfunctions.net/astroMatch/Julia/person")
         .then(response =>{
-            console.log(response.data);
+            
+            
             setProfile(response.data.profile)
+        }).catch(erro=>{
+            alert(erro.response.data)
         })
-       
     }
-     const darMacth = (event)=>{
-        const copiaLista = [...pegarDados()];
-
-        copiaLista.push([])
-       //quando der match devo gurdar o perfil da pessoa em um array, 
-       //pra isso usar espelhamento
-       setProfile(copiaLista)
-     }
-    useEffect (()=>{
-        pegarDados()
-        return ()=>{
-            pegarDados()
-        }
-    },[]);
-  
-
-    const limparLista = ()=>{
-        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Julia/clear")
-        .then(response =>{
-            console.log(response.data);
-            setLimpar(response.data.clear)
-        })
-       
-    }
-
-    useEffect(()=>{
-        limparLista()
-        return ()=>{
-            limparLista()
-        }
-    },[setLimpar])
-
-
-  
      
-     return(
-        <div>
-            <h1> astromatch </h1>
-            <p> {profile.photo} </p>
-            <p> {profile.photo_alt} </p>
-            <p> {profile.name} {profile.age} </p>
-            <p> {profile.bio} </p>
+    const darMacth =(choice)=>{
+
+       const body = {
+            id:profile.id,
+            choice:choice
+        }
+
+        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Julia/choose-person", body)
+        .then(response=>{
+            alert("Voce deu Match")
             
 
-            <button> dar match </button>
-            <button onClick={()=>darMacth()}> deletar </button>
+            pegarDados()
+        }).catch(
+            erro=>{
+                alert(erro.response.data);
+            }
+        )
+        console.table(body);
+        
+      }
+
+      const mudarTela  = ()=>{
+           
+      }
+
+    useEffect (()=>{
+        pegarDados()
+        
+    },[]);
+
+     return(
+        <div className="renderizaçao">
+            <h1 className="titulo"> astromatch </h1>
+
+            <img src={profile.photo} alt="" className="imagem"/> 
+            <p> {profile.photo_alt} </p>
+            <p className="nome"> {profile.name} {profile.age} </p>
+            <p className="bio"> {profile.bio} </p>
+            
+              
+            <button onClick= {()=> darMacth(true) }> dar match </button>
+        
+            <button onClick={null}> deletar </button>
             <button> Ver Lista </button>
            
 

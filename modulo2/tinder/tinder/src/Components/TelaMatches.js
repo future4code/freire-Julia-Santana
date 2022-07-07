@@ -17,6 +17,23 @@ export default function TelaPrincipal(){
     useEffect (()=>{
         listaMatches()
     }, [])
+
+    const limparLista = ()=>{
+        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Julia/clear")
+        .then(response =>{
+            console.log(response.data);
+            setLimpar(response.data.clear)
+        })
+       
+    }
+
+    useEffect(()=>{
+        limparLista()
+        return ()=>{
+            limparLista()
+        }
+    },[setLimpar])
+
     return (
        <div>
          <button onClick={()=>limparLista()}> Limpar lista </button>
