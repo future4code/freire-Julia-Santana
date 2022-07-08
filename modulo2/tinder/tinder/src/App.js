@@ -1,12 +1,16 @@
 import react, { useEffect, useState} from "react";
 import TelaPrincipal from "./Components/TelaPrincipal";
-// import TelaMatches from "./Components/TelaMatches";
+ import TelaMatches from "./Components/TelaMatches";
+ 
 
 function App() {
 
-  const trocarTela =()=>{
-        
-  }
+  
+
+//  const irParaListaMatch = ()=>{
+//   setTela({tela:"lista"})
+//  }
+  
   
   return (
     <div className="App">
@@ -14,9 +18,10 @@ function App() {
       
 
       <TelaPrincipal/>
+   
 
     </div>
   )
-}
+  }
 
 export default App;

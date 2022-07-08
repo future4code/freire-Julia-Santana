@@ -1,21 +1,27 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios'
 
-export default function TelaPrincipal(){
+ export default function TelaPrincipal(){
  const [match, setMatch] = useState([])
-
-
-
+ const [limpar, setLimpar] = useState("")
+ 
     const listaMatches = ()=>{
-        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Julia/matche")
+        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Julia/matches")
         .then(response =>{
-            console.log(response.data);
+            alert("Perfil salvo na lista")
             setMatch(response.data.matches)
-        })
+    
+        
+        }).catch(
+            erro=>{
+                alert(erro)
+            }
+        )
     }
 
     useEffect (()=>{
         listaMatches()
+   
     }, [])
 
     const limparLista = ()=>{
