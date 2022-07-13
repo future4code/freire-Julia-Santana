@@ -1,13 +1,17 @@
-import React from "react";
-import { Router } from "./routes/Routes"
-import './index.css'
+
+import React from 'react'
+import { Routes } from 'react-router-dom';
+
+import { Router } from './Routes/Routes';
+
+
+
 
 function App() {
   return (
-
-      <div>
-        <Router/>
-      </div>
+    <div className="App">
+    <Router/>
+    </div>
   );
 }
 
