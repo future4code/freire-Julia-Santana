@@ -8,12 +8,28 @@ import axios from "axios";
 const CreateTripPage = () => {
 
     const [candidato, setCandidato] = useState("")
+    const [name, setName] = useState("")
+    const [number, setNumber] = useState("")
+    const [text, setText] = useState("")
+
+
+    const onChangeName = (event) => {
+        setName(event.target.value)
+    };
+
+    const onChangeNumber = (event) => {
+        setNumber(event.target.value)
+    }
+
+    const onChangeTexto = (event) => {
+        setText(event.target.value)
+    }
 
     const seEscrever = () => {
 
         axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/:aluno/trips/:id/apply")
             .then(response => {
-                alert("response")
+                alert("enviado com sucesso")
 
                 setCandidato(response.data.apply)
             }).catch(erro => {
@@ -26,6 +42,7 @@ const CreateTripPage = () => {
     }, [])
 
     const navigate = useNavigate()
+
     return (
         <div>
             <h1> Candidatar a Viagem </h1>
@@ -33,20 +50,35 @@ const CreateTripPage = () => {
                 <option> </option>
             </select>
 
-            <input placeholder="nome"> </input>
+            <input placeholder="nome"
+                type="name"
+                value={name}
+                onChange={onChangeName}
 
-            <input placeholder="idade"> </input>
+            />
 
-            <input placeholder="Texto de Candidatura"> </input>
+            <input placeholder="idade"
+                type="number"
+                value={number}
+                onChange={onChangeNumber} />
 
-            <input placeholder="Profissão"> </input>
+            <input placeholder="Texto de Candidatura"
+                type="text"
+                value={text}
+                onChange={onChangeTexto}
+            />
+
+            <input placeholder="Profissão"
+                type="text"
+                value={text}
+                onChange={onChangeTexto} />
 
             <select>
                 <option></option>
             </select>
 
             <button onClick={() => voltar(navigate)}> voltar </button>
-            <button> enviar </button>
+            <button onClick={seEscrever}> enviar </button>
 
 
         </div>

@@ -15,6 +15,9 @@ export const seEscrever = (navigate)=>{
     navigate("/se-candidatar-para-viajar")
   }
 
- export  const voltar = (navigate)=>{
+ export const voltar = (navigate)=>{
     navigate(-1)
  }
+ export const criarViagem = (navigate)=>{
+    navigate("/criar-viagem")
+  }
