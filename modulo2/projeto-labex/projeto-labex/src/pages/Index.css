@@ -1,0 +1,18 @@
+*{ 
+    margin: 0;
+    padding: 0;
+
+}
+
+.header{
+    background-color: #11bed4;
+    padding: 30px 10%;
+    text-align:center;
+}
+
+.footer{
+    background-color: #2b3034;
+    
+   
+
+}

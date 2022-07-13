@@ -1,0 +1,1 @@
+export const urlViagens =  "https://us-central1-labenu-apis.cloudfunctions.net/labeX/Julia-Moreira-Freire/trips"
