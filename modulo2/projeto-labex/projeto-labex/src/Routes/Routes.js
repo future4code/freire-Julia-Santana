@@ -26,13 +26,13 @@ export const Router = () => {
 
                     <Route path="/area-administrativa" element={<LoginPage/>} />
 
-                    {/* <Route path="lista de viagem " element ={<ListTripsPage/>} />
+                     <Route path="/lista-de-viagem " element ={<TripDetailPage/>} />
 
-                        <Route path="5" element ={<ListTripsPage/>} />
+                         <Route path="/criar-viagem" element ={<CreateTripPage/>} />
 
-                        <Route path="6" element ={<ListTripsPage/>} /> */}
+                        <Route path="6" element ={<ListTripsPage/>} />
 
-                    {/* <Route path="*" element ={<LoginPage/>} /> */}
+                 
                 </Routes>
 
 
