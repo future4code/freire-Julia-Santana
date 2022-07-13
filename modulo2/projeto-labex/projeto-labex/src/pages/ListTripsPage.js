@@ -6,7 +6,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { urlViagens } from "../Constantes/url";
 
-
 const ListTripsPage = (url) => {
     const [lista, setLista] = useState("")
 
