@@ -3,13 +3,17 @@ import React from 'react';
 import './App.css';
 import Api from './component/Api';
 import TelaLista  from './component/TelaLista';
+import DetalhesPlaylist from './component/DetalhesPlaylist'
 
 export default class App extends React.Component {
 
   state = {
     telaAtual:"cadastro",
-   
+    urlPlaylist:"",
   }
+
+ 
+  
   escolherTela = ()=>{
     switch (this.state.telaAtual){
       case "cadastro":
