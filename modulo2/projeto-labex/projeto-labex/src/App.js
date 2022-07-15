@@ -1,19 +1,13 @@
-
-import React from 'react'
-import { Routes } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-
-import { Router } from './Routes/Routes';
-
-
-
+import React from "react";
+import { Router } from "./routes/Routes"
+import './index.css'
 
 function App() {
   return (
-    <div className="App">
-    <Router/>
-    
-    </div>
+
+      <div>
+        <Router/>
+      </div>
   );
 }
 
