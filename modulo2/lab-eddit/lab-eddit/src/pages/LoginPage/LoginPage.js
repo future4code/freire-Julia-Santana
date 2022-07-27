@@ -21,15 +21,25 @@ const LoginPage = () => {
 
             <S.containerInput>
 
-                
-                    <S.input type="text" placeholder="login" size="2em" />
-                    <S.input type="password" placeholder="senha" size="2em" />
-         
+
+                <S.input type="email"
+                    placeholder="email"
+                    size="2em"
+                    required
+                />
+                <S.input type="password"
+                    placeholder="senha"
+                    size="2em"
+                    patern={"^.{6,}"}
+                    title={"minimo 6 numeros"}
+                    required
+                />
+
 
             </S.containerInput>
 
-            <S.botaoContinuar onClick={()=>navigate("/comentario")}> Continuar </S.botaoContinuar>
-            <S.botaoCriarConta onClick={()=>navigate("/cadastro")}> Criar Conta </S.botaoCriarConta>
+            <S.botaoContinuar onClick={() => navigate("/comentario")}> Continuar </S.botaoContinuar>
+            <S.botaoCriarConta onClick={() => navigate("/cadastro")}> Criar Conta </S.botaoCriarConta>
 
 
 

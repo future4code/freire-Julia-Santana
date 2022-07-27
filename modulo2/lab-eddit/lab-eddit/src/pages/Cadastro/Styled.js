@@ -9,7 +9,7 @@ height: 30px;
 width: 300px;
 
 `
-export const containerInput = styled.div`
+export const form = styled.div`
 margin-top: 15px;
 display: flex;
 justify-content: center;

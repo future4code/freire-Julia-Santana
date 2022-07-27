@@ -1,6 +1,6 @@
 
 export const login = (navigate) => {
-    navigate("/login");
+    navigate("/");
 };
 
 export const cadastro = (navigate) => {

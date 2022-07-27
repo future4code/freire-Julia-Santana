@@ -15,7 +15,7 @@ border-radius: 27px;
 color:#fff;
 `
 
-export const input = styled.input`
+export const textArea = styled.textarea`
 background: #EDEDED;
 border-radius: 12px;
 width: 200px;
@@ -56,4 +56,13 @@ border-radius: 12px;
 width: 300px;
 height: 200px;
 margin-top: 30px;
+`
+
+export const formulario = styled.form`
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0;
+padding: 0;
+flex-direction: column;
 `
