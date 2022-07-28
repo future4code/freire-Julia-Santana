@@ -24,11 +24,11 @@ const Cadastro = () => {
     .then((response) => {
       setCadastro("Deu certo: ", response.data);
       localStorage.setItem("token", response.data.token);
-       
-
+         alert("Cadastrado com Sucesso")
     })
       .catch((error) => {
       setCadastro("Deu errado: ", error.response);
+      alert("erro")
       });
   };
 

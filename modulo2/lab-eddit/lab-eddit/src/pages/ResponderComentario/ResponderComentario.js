@@ -1,37 +1,57 @@
 import { Header } from "../../components/Header";
-import { AiFillLike, AiOutlineDislike} from 'react-icons/ai';
 import *as S from "./Styled";
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const ResponderComentario= () => {
+const ResponderComentario = () => {
 
-    const [resposta, setResposta] = useState("");
+  const [response, setResponse] = useState([]);
 
+  const [newResponse, setNewResponse] = useState("")
 
-  function enviarResposta (event) {
+  function pegarResposta(event) {
     event.preventDefault()
-
+    setResponse([...response, newResponse])
+    setNewResponse("")
   }
 
+
   const onChangeResposta = (event) => {
-    setResposta(event.target.value);
+    setNewResponse(event.target.value);
+    event.target.setCustomValidity("")
+
   };
 
-    return(
-        <S.container onSubmit={resposta}>
-        <Header/>
-  
-       <S.input placeholder="Adicionar Resposta"
-       name="resposta"
-       onChange={onChangeResposta}
-       value={resposta}
-       />
 
-       <S.Postar> Responder </S.Postar>
-   
-   </S.container>
-    )
+
+  return (
+    <S.container>
+      <Header />
+      <S.formulario onSubmit={pegarResposta}>
+        <S.textArea placeholder="Escreva sua Resposta"
+          name="resposta"
+          onChange={onChangeResposta}
+          value={newResponse}
+        />
+
+        <S.Postar onClick={pegarResposta}> Postar </S.Postar>
+
+      </S.formulario>
+
+      {response.map(res => {
+        return (
+          <S.blocoResposta>
+
+            <span> {res} </span>
+
+          </S.blocoResposta>
+        )
+      })}
+
+
+    </S.container>
+  )
 }
+
 
 export default ResponderComentario

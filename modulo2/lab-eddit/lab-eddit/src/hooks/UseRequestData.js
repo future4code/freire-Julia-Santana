@@ -1,6 +1,6 @@
 import axios from "axios";
 import  { useEffect, useState } from "react";
-import { BASE_URL } from "../constants/urls";
+// import { BASE_URL } from "../constants/urls";
 
 const UseRequestData = (url,initialState) => {
     const [data, setData] = useState(initialState)
@@ -10,7 +10,7 @@ const UseRequestData = (url,initialState) => {
         setIsLoading(true)
         const token = localStorage.getItem("token")
         const header = {headers: {Authorization: token}}
-        axios.get(`${BASE_URL}${url}`, header)
+        axios.get(` https://labeddit.herokuapp.com`, header)
         .then((res)=>{
             setData(res.data)
             setIsLoading(false)

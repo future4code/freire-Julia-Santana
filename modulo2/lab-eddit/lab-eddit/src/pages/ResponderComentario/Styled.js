@@ -30,30 +30,28 @@ margin: 0;
 padding: 0;
 flex-direction: column;
 `
-export const autor = styled.p`
-font-family: 'IBM Plex Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 16px;
-text-align: center;
-color: #6F6F6F;
 
-`
-
-export const comentario = styled.p `
-font-family: 'IBM Plex Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 23px;
-color: #000000;
-
-`
-export const blocoComentario = styled.div `
+export const blocoResposta = styled.div `
 border: solid 2px #656569;
 border-radius: 12px;
 width: 300px;
 height: 200px;
+margin-top: 30px;
+`
+
+export const formulario = styled.form`
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0;
+padding: 0;
+flex-direction: column;
+`
+
+export const textArea = styled.textarea`
+background: #EDEDED;
+border-radius: 12px;
+width: 200px;
+height: 100px;
 margin-top: 30px;
 `
