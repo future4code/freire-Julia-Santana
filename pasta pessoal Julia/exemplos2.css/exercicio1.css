@@ -1,0 +1,11 @@
+div{
+    background-color: brown; /* cor de fundo*/
+}
+
+.texto-importante{
+    color: red;  /* muda cor do texto */
+}
+
+.texto-nao-importante{
+    color:blue;
+}
