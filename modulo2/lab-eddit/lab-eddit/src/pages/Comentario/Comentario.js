@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { AiFillLike, AiOutlineDislike } from 'react-icons/ai';
 import *as S from "./Styled";
@@ -16,16 +16,15 @@ const Comentario = () => {
   const params = useParams();
   const [title, setTitle] = useState("");
  
-
-
  const publicarPost =()=>{
     const token = localStorage.getItem("token")
     const auth = {headers:{Authorization:token}}
+    
     const body ={
         title:title,
         body:body
     }
-    axios.post("https://labeddit.herokuapp.com/posts/:id/comments", body, auth)
+    axios.post(`https://labeddit.herokuapp.com/posts/:id/comments`, body, auth)
     .then((response) => {
         setComments("Deu certo: ", response.data);
         localStorage.setItem("token", response.data.token);
@@ -36,16 +35,19 @@ const Comentario = () => {
       });
   };
 
-   const renderizarComentario =(event)=>{
+
+    const renderizarPost =(event)=>{
       event.preventDefault()
-      publicarPost(getData, params.id)
+       publicarPost(getData, params.id)
    }
-     
+
+
   function pegarComentario(event) {
     event.preventDefault()
     setComments([...comments, novoComentario])
     setNovoComentario("")
   }
+  console.log();
 
   const onChangeComentario = (event) => {
     setNovoComentario(event.target.value);
@@ -72,12 +74,12 @@ const Comentario = () => {
           <S.blocoComentario>
 
             <S.autor> Enviado por: @ju_santana </S.autor>
-
-            <span> {com} </span>
-
             <AiFillLike />
             <AiOutlineDislike />
 
+            <span> {com} </span>
+            <AiFillLike />
+            <AiOutlineDislike />
           </S.blocoComentario>
         )
       })}

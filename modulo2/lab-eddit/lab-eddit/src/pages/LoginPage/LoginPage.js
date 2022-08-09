@@ -7,6 +7,7 @@ import UseForm from "../../hooks/UseForm";
 
 
 
+
 const LoginPage = () => {
     const navigate = useNavigate()
 
@@ -25,7 +26,7 @@ const LoginPage = () => {
         axios.post("https://labeddit.herokuapp.com/users/login", body)
             .then((response) => {
                 setLogin("Deu certo: ", response.data);
-                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("token", response.data.token)
                
             })
             .catch((error) => {

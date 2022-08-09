@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import *as S from "./Styled";
 import { Header } from "../../components/Header";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import { URL_BASE } from "../../constants/Url";
 
 
 const Cadastro = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
@@ -43,6 +45,12 @@ const Cadastro = () => {
   const onChangePassword = (event) => {
     setPassword(event.target.value);
   };
+
+  const logarConta = ()=>{
+    enviarCadastro()
+    navigate("/comentario")
+}
+
 
   return (
     <S.container>
@@ -84,7 +92,7 @@ const Cadastro = () => {
         <input type="checkbox" /> Eu concordo em receber emails sobre coisas legais do LabEddit
 
       </div>
-      <S.botaoCadastrar onClick={enviarCadastro}> Cadastrar </S.botaoCadastrar>
+      <S.botaoCadastrar onClick={()=>logarConta()}> Cadastrar </S.botaoCadastrar>
 
 
     </S.container>
