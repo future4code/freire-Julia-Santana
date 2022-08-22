@@ -1,0 +1,18 @@
+GET http://localhost:3003/toDoApi
+
+###
+
+POST  http://localhost:3003/toDoApi
+Content-Type: application/json
+
+{
+           "id":"1",
+          "name":"blusa",
+          "price":50
+
+}
+
+
+###
+
+DELETE  http://localhost:3003/produto1/2
