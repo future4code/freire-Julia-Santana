@@ -1,1 +1,0 @@
-//Resposta A: Mudou a quantidade de configurações que realmente usamos para trabalhar.
