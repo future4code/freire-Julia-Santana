@@ -44,7 +44,7 @@ export const createPurchases = async (req:Request, res:Response): Promise <void>
 
         // Tipando uma compra
         const Purchase: purchases = {
-            //id: uuid(),
+            id: uuid(),
             user_id,
             product_id,
             quantity,
@@ -62,4 +62,8 @@ export const createPurchases = async (req:Request, res:Response): Promise <void>
         message: error.message
       });
 }
+}
+
+function uuid(): string {
+    throw new Error("Function not implemented.")
 }

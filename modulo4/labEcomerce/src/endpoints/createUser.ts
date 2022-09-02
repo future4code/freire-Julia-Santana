@@ -41,7 +41,7 @@ export const createUser = async(
         
         // Tipando um usuario
         const newUser: users = {
-            id,
+            id: uuid(),
             name,
             email,
             password
@@ -55,4 +55,8 @@ export const createUser = async(
             message: error.message
           });
     }
+}
+
+function uuid(): string {
+    throw new Error("Function not implemented.")
 }

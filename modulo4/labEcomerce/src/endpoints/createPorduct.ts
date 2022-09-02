@@ -25,7 +25,7 @@ export const createProduct = async(req:Request, res:Response): Promise<void> => 
 
         // tipando um produto 
         const Produto: product = {
-            id,
+            id: uuid(),
             name,
             price,
             image_url
@@ -41,4 +41,8 @@ export const createProduct = async(req:Request, res:Response): Promise<void> => 
             });
       }
 
+}
+
+function uuid(): string {
+    throw new Error("Function not implemented.");
 }
