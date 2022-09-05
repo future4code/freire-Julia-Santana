@@ -1,6 +1,7 @@
 import { purchases} from "../type/typePurchases";
 import { connection } from "./connection";
 
+// Essa função está inserindo um produto na tabela "labecommerce_purchases"
 export const insertPurchases = async (purchases: purchases):Promise<void> =>{
     await connection ("labelabecommerce_purchases")
     .insert({
