@@ -6,6 +6,9 @@ export enum USER_ROLES {
 }
 
 export class User {
+    static getRole() {
+        throw new Error("Method not implemented.")
+    }
     constructor(
         private id: string,
         private name: string,

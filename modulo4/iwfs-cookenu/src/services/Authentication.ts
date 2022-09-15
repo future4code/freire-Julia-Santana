@@ -6,16 +6,24 @@ export interface AuthenticationData{
     role:USER_ROLES
 }
 export class Authenticator{
-    //gerar token
-      public generate(input:AuthenticationData): string{
-        const token = jwt.sign(input, process.env.JWT_KEY,{
-             expiresIn:process.env.ACCESS_TOKEN_EXPIRES_IN,
-        });
-        return token;
-      }
-
-      public getTokenData(token: string): AuthenticationData{
-        const data = jwt.verify(token, process.env.JWT_KEY)
-        return data as  AuthenticationData
+    generate(arg0: { id: string; role: any }) {
+        throw new Error("Method not implemented.")
     }
+  
+    //gerar token
+    public generateToken =  (payload:AuthenticationData)=>{
+      const token = jwt.sign(payload,
+          process.env.JWT_KEY as string,
+          {expiresIn: process.env.EXPIRES_IN}
+          )
+          return token 
+  }
+// recebe o tokem 
+  public getTokenData= (token:string):AuthenticationData =>{
+          const tokenData = 
+          jwt.verify(
+              token,
+              process.env.JWT_KEY as string) as AuthenticationData
+          return tokenData 
+             }
 }
