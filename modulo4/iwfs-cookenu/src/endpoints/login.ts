@@ -17,14 +17,15 @@ export async function login(req:Request, res:Response){
 
             // verificando se o usuario já existe
              const userData = new UserDataBase()
-             const user = await userData. findUserBtEmail(email)
+             const user = await userData.findUserBtEmail(email)
              if(!user){
                 res.status(409).send("esse email não está cadastrado")
              }
             //instacia da classe
             
             const HashManager = new hashManager()
-            const passwordIsCorrect = hashManager.compare(password, user.getPassword);
+            const passwordIsCorrect = HashManager.compare(password, user.getPassword())
+
             if(!passwordIsCorrect){
                 res.status(401).send('email ou senha incorereto')
             }
