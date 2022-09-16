@@ -4,7 +4,6 @@ export class Recipe {
         private title: string,
         private ingredients: string,
         private description: string,
-        private image_url: string,
         private user_id: string
     ) {}
 
@@ -14,7 +13,6 @@ export class Recipe {
             data.title,
             data.ingredients,
             data.description,
-            data.image_url,
             data.user_id
         );
     }
@@ -33,10 +31,6 @@ export class Recipe {
 
     public getDescription(): string {
         return this.description;
-    }
-
-    public getImage_url(): string {
-        return this.image_url;
     }
 
     public getUser_id(): string {

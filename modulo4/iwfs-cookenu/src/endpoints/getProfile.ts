@@ -12,7 +12,7 @@ export async function getProfile (req:Request, res:Response){
          const authenticatorData = authenticator.getTokenData(token);
 
          const userData = new UserDataBase();
-         const user = await userData.getUserById(authenticatorData.id);
+        const user = await userData.getUserById(authenticatorData.id);
 
          res.status(200).send({
             name:user.getName,
