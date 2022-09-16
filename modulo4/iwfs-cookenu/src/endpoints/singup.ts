@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import { UserDataBase } from "../data/UserDataBase";
 import { User, USER_ROLES } from "../entities/User";
-import { Authenticator } from "../services/Authentication";
+import { AuthenticationData, Authenticator } from "../services/Authentication";
 import { hashManager } from "../services/hashManager";
 import { idGenerator } from "../services/idGenerator";
 
-export async function singup(req:Request, res:Response){
+export async function signup(req:Request, res:Response){
+
         try {
             const {name, email, password, role} = req.body
             if(!name || !email || !password || !role){
@@ -21,10 +22,11 @@ export async function singup(req:Request, res:Response){
 
             // verificando se o usuario já existe
              const userData = new UserDataBase()
-             const user = await userData. findUserBtEmail(email)
-             if(!user){
+             const user = await userData.findByEmail(email)
+             if(user){
                 res.status(409).send("esse email já está cadastrado")
              }
+
             //instacia da classe
             const Idgenerator = new idGenerator();
             const id = Idgenerator.generate() // cria o id
@@ -32,13 +34,20 @@ export async function singup(req:Request, res:Response){
             const HashManager = new hashManager()
             const hashPassword =  await HashManager.hash(password)
 
-            const user1 = new User(id, name, email, hashPassword, role)
-             await userData.createUser(user1);
+            const newUser = new User(id, name, email, hashPassword, role)
+             await userData.createUser(newUser);
 
-             const authentication = new Authenticator()
-             const token = authentication.generate({id, role});
-             res.status(200).send({ message: "Usuário criado com sucesso", token})
+             const payload:AuthenticationData = {
+                  id:newUser.getId(),
+                  role:newUser.getRole()
+             }
+             const token = new Authenticator().generateToken(payload)
+
+             res.status(200).send({ message: "user created successfully", token})
         } catch (error:any) {
+            if(typeof error.message === "string" && error.message.includes("Duplicate entry")){
+                return res.status(400).send("email already taken")
+            }
             res.status(400).send(error.message);
         }
        

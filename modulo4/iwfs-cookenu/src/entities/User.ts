@@ -5,6 +5,14 @@ export enum USER_ROLES {
     ADMIN = "ADMIN"
 }
 
+export interface IUserDB{
+    id:string,
+    name:string,
+    email:string,
+    password:string,
+    role:USER_ROLES
+}
+
 export class User {
     static getRole() {
         throw new Error("Method not implemented.")

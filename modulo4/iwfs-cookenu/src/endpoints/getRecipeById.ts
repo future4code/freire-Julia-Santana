@@ -11,6 +11,8 @@ export async function getRecipeById(req:Request, res:Response){
         const authenticationData = authentication.getTokenData(token);
 
         const recipeId = req.params.id;
+        
+        
 
         const recipeDataBase = new RecipeDatabase();
         const recipe = await recipeDataBase.getRecipeById(recipeId)
@@ -20,11 +22,11 @@ export async function getRecipeById(req:Request, res:Response){
         title:recipe.getTitle(),
         ingredients: recipe.getIngredients(),
         description: recipe.getDescription(),
-        image_url: recipe.getImage_url(),
         user_id: recipe.getUser_id(),
 
        });
 
+       
     } catch (error:any) {
         res.status(400).send(error.message);
     }
