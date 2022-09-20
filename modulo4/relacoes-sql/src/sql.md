@@ -1,4 +1,4 @@
-USE `freire-julia-santana`;
+SELECT `freire-julia-santana`;
 -- exercicio 1
  CREATE TABLE Actor (
     id VARCHAR(255) PRIMARY KEY,
@@ -130,69 +130,71 @@ WHERE (name LIKE "G%" OR name LIKE "g%" OR name LIKE "A%" OR name LIKE "a%") AND
     id VARCHAR(255) PRIMARY KEY,
     name VARCHAR (255) NOT NULL,
     sinopse TEXT,
-    Data_de_Lançament0 DATE NOT NULL,
+    Data_de_Lancamento DATE NOT NULL,
     avaliacao FLOAT NOT NULL
 );
 
-INSERT INTO Filme (id, name, sinopse, Data_de_Lançamento, avaliação)
+INSERT INTO Filme (id, name, sinopse, Data_de_Lancamento, avaliacao)
   VALUES(
-`001`,
+'001',
 
- `Se Eu Fosse Você`,
+ 'Matrix',
  
- `Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. 
- Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos`,
+ 'Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. 
+ Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos',
  
- `06/01/2006`,
+ '2010-06-01',
 
- `7`
+ '7'
   );
   
-  INSERT INTO Filme (id, sinopse, Data_de_Lancamento, avaliação)
+  INSERT INTO Filme (id, name, sinopse, Data_de_Lancamento, avaliacao)
   VALUES(
-`002`,
+'002',
 
- `Doce de mãe`,
+ 'Doce de mãe',
 
- `Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões.
+ 'Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões.
  A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, 
- empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela`,
+ empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela',
 
- `27/12/2012`,
+ '2012-12-27',
 
- `10`  
+ '10'  
   );
   
-  INSERT INTO Filme (id, sinopse, Data_de_Lancamento, avaliação)
+  INSERT INTO Filme (id, name, sinopse, Data_de_Lancamento, avaliacao)
   VALUES(
-   `003`,
+   '003',
 
- `Dona Flor e Seus Dois Maridos`,
+ 'Dona Flor e Seus Dois Maridos',
 
- `Dona Flor é uma sedutora professora de culinária casada com Vadinho,
- que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.`,
+ 'Dona Flor é uma sedutora professora de culinária casada com Vadinho,
+ que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.',
 
- `02/11/2017`,
+ '2017-11-02',
 
-`8`
+'8'
+
+
   );
   
-  INSERT INTO Filme (id, sinopse, Data_de_Lancamento, avaliação)
+  INSERT INTO Filme (id, name, sinopse, Data_de_Lancamento, avaliacao)
   VALUES(
-   `004`,
+   '004',
 
- `Truque de Mestre`,
+ 'Truque de Mestre',
 
- `Um grupo de ilusionistas encanta o público com suas mágicas e também rouba bancos em outro continente,
+ 'Um grupo de ilusionistas encanta o público com suas mágicas e também rouba bancos em outro continente,
  distribuindo a quantia para os próprios espectadores. O agente do FBI Dylan Hobbs está determinado a 
  capturá-los e conta com a ajuda de Alma Vargas, uma detetive da Interpol, e também de Thaddeus Bradley, 
  um veterano desmistificador de mágicos que insiste que os assaltos são realizados a partir de disfarces e
  jogos envolvendo vídeos.
-`,
+',
 
- `05/07/2013`,
-
-`10`
+ '2013-07-05',
+ 
+'10'
   );
   
   -- exercicio 6
@@ -357,7 +359,7 @@ SELECT COUNT(*) FROM Actor WHERE gender = "female";
  
  -- qustao 1b: Crie a tabela e, ao menos, uma avaliação para cada um dos filmes
  -- resposta:
- CREATE TABLE Filme (
+ CREATE TABLE Avaliacao (
  id  VARCHAR(255) PRIMARY KEY,
  comment TEXT NOT NULL,
  rate FLOAT NOT NULL,
@@ -365,25 +367,87 @@ SELECT COUNT(*) FROM Actor WHERE gender = "female";
  FOREIGN KEY (Filme_id) REFERENCES Filme(id)
  );
  
- INSERT INTO Filme (id, comment, rate, movie_id) 
+ 
+ INSERT INTO Avaliacao (id, comment, rate, Filme_id) 
 VALUES (
+       
 		"001",
     "Muito bom!",
     7,
-		"002",
-        "Gostei",
-        10,
-        
-        "003",
-        "filme legal",
-        "5",
-        
-        "003",
-        "Amei",
-        10
-);
-  
-  SELECT * FROM Filme
-  
-  
+    "001"
+),
 
+(
+       
+		"002",
+    "Muito bom!",
+    7,
+    "002"
+),
+
+(
+       
+		"003",
+    "Muito bom!",
+    7,
+    "003"
+),
+(
+       
+		"004",
+    "Muito bom!",
+    7,
+    "004"
+);
+
+SELECT * FROM  Avaliacao;
+
+
+
+ -- questão 1d Altere a tabela de filmes para que ela não tenha mais uma coluna chamada rating
+ -- resposta: 
+  ALTER TABLE Movie DROP COLUMN rate;
+  
+  -- questao 1e Tente apagar um filme que possua avaliações. Anote e explique o resultado da query
+  -- resposta: para apagar o filme, primeiro preciso apagar as relacoes da tabela que se relaciona com o erro,
+  -- para depois apagar a tabela do filme
+  
+  SELECT * FROM Movie;
+  
+  -- exercicio 2
+  CREATE TABLE MovieCast (
+		movie_id VARCHAR(255),
+		actor_id VARCHAR(255),
+    FOREIGN KEY (movie_id) REFERENCES Movie(id),
+    FOREIGN KEY (actor_id) REFERENCES Actor(id)
+);
+
+-- exercicio 2a:Explique, com as suas palavras, essa tabela
+-- resposta: Uma tabela foi criada para fazer relacao com a tabela de movie, e a tabela de actor,
+-- atraves da chave estrangeira a foreign key,
+
+-- exercicio 2b: Crie, ao menos, 6 relações nessa tabela
+ -- resposta
+
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+		"001",
+    "002",
+    "003",
+    "004"
+);
+
+-- exercicio 2c Tente criar uma relação com um filme ou um ator inexistente. Anote e explique o resultado da query
+-- resposta: 
+
+-- exercicio 2d Tente apagar um ator que possua uma relação nessa tabela. Anote e explique o resultado da query
+-- resposta: não é possivel apagar o ator diretamente, para apagar o ator, antes é preciso apagar a tabela
+-- na qual ele possue uma relação.
+
+-- exercicio 3a Explique, com suas palavras, a query acima. O que é o operador ON?
+--  resposta: permite verificar se um valor específico corresponde a algum valor presente em uma lista
+
+-- exercicio 3b  Escreva uma query que retorne somente o nome, id e nota de avaliação dos filmes que já foram avaliados.
+-- resposta :
+SELECT m.id as movie_id, r.rate as rating FROM Movie m
+INNER JOIN Rating r ON m.id = r.movie_id;
