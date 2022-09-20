@@ -1,7 +1,7 @@
 import { connection } from "./data/connection";
 import { Request, Response } from "express";
 
-//  Crie uma cópia do endpoint acima, e altere-o para que ele possa 
+// exercicio1a Crie uma cópia do endpoint acima, e altere-o para que ele possa 
 //receber um parâmetro de filtragem por nome. Este nome deve ser enviado por query params.
 
 
@@ -19,8 +19,16 @@ export async function selectUsersByName(name:string): Promise<any> {
       const result = await connection("aula48_exercicio")
          .where("name", "LIKE", `%${name}%`)
          return result
-
 }
+
+//exercicio 1b
+export async function selectUsersByType(type:string): Promise<any> {
+
+   const result = await connection("aula48_exercicio")
+      .where("type", "LIKE", `%${type}%`)
+      return result
+}
+
 
 export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
    try {

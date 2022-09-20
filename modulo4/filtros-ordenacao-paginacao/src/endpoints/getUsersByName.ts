@@ -10,6 +10,9 @@ export async function getUsersByName(req:Request, res:Response): Promise<any> {
             
        const result = await selectUsersByName(name)
          console.log(result);
+         if (name === "") {
+            throw new Error("Coloque um Nome")
+         }
          res.status(200).send(result)
          
        

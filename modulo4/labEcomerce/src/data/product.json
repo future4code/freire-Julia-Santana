@@ -1,0 +1,23 @@
+[
+{
+"id": "1",
+"name":"notebook",
+"price":"4000",
+"image_url":"https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
+
+},
+
+{
+"id":"2",
+"name":"notebook-LG",
+"price":"3500",
+"image_url":"https://www.lg.com/br/images/computadores/md05949297/gallery/medium01.jpg"
+},
+
+{
+"id":"3",
+"name":"notebook-Samsung",
+"price":"3500",
+"image_url":"https://images.kabum.com.br/produtos/fotos/156737/notebook-samsung-book-intel-core-i3-1115g4-4gb-ram-1tb-hd-15-6-1920-x1080-full-hd-windows-10-home-prata-np550xda-kt1br_1620160240_original.jpg"
+}
+]
