@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/node": "^18.7.13",
     "eslint": "^8.16.0"
   },
   "name": "freire-julia-santana",
