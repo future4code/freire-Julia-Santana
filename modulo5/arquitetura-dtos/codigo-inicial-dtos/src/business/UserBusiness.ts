@@ -101,7 +101,7 @@ export class UserBusiness {
             throw new Error("Parâmetro 'password' inválido")
         }
 
-        //const userDatabase = new UserDatabase()
+       
         const userDB = await this.userDatabase.findByEmail(email)
 
         if (!userDB) {
@@ -116,7 +116,6 @@ export class UserBusiness {
             userDB.role
         )
 
-        //const hashManager = new HashManager()
         const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword())
 
         if (!isPasswordCorrect) {
@@ -128,7 +127,6 @@ export class UserBusiness {
             role: user.getRole()
         }
 
-       // const authenticator = new Authenticator()
         const token = this.authenticator.generateToken(payload)
 
         const response = {
