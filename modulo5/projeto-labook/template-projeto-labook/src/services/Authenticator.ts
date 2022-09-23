@@ -7,10 +7,8 @@ dotenv.config()
 export interface ITokenPayload {
     id: string,
     role: USER_ROLES,
-
+    
 }
-
-
 
 export class Authenticator {
     generateToken = (payload: ITokenPayload): string => {

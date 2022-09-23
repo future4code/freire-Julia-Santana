@@ -5,10 +5,21 @@ import { userInfo } from "os"
 
 export class UserDatabase extends BaseDatabase {
     public static TABLE_USERS = "Labook_Users"
-    public createUser = async(user: User)=>{
-        const userDB = {
-          
+
+    public toUserDBModel = (user:User)=>{
+        const userDB:IUserDB ={
+          id:user.getId(),
+          name:user.getName(),
+          email:user.getEmail(),
+          password:user.getPassword(),
+          role:user.getRole()
         }
+
+        return userDB
+    }
+
+    public createUser = async(user: User)=>{
+        const userDB = this.toUserDBModel(user)
         await BaseDatabase.connection(UserDatabase.TABLE_USERS)
         .insert(userDB)
     }

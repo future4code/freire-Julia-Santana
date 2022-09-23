@@ -1,13 +1,58 @@
-export interface IPostDB {
-    id: string,
-    content: string,
-    user_id: string
+export interface ICreatePostInputDTO{
+    token: string,
+    content: string
+}
+
+export interface ICreatePostOutputDTO{
+    message:string,
+    post:Post
 }
 
 export interface ILikeDB {
     id: string,
     post_id: string,
     user_id: string
+}
+
+export interface IPostDB{
+    id:string,
+    content:string,
+    user_id:string
+}
+
+export interface IGetPostsInputDTO {
+    token: string
+}
+
+export interface IGetPostsOutputDTO {
+    posts: Post[]
+}
+
+export interface IDeletePostInputDTO {
+    token: string,
+    postId: string
+}
+
+export interface IDeletePostOutputDTO {
+    message: string
+}
+
+export interface IAddLikeInputDTO {
+    token: string,
+    postId: string
+}
+
+export interface IAddLikeOutputDTO {
+    message: string
+}
+
+export interface IRemoveLikeInputDTO {
+    token: string,
+    postId: string
+}
+
+export interface IRemoveLikeOutputDTO {
+    message: string
 }
 
 export class Post {
