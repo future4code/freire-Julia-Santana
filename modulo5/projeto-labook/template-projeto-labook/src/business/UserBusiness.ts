@@ -19,7 +19,7 @@ export class UserBusiness {
 
     const {name, email, password}= input
 
-        if (!name || !email || !password) {
+        if (!name || !email || !password ) {
             throw new Error("Um ou mais parâmetros faltando")
         }
 
@@ -45,10 +45,10 @@ export class UserBusiness {
             throw new Error("E-mail já cadastrado")
         }
 
-        const idGenerator = new IdGenerator()
+     
         const hashManager = new HashManager()
 
-        const id = idGenerator.generate()
+        const id = await this.idGenerator.generate()
         const hashedPassword = await hashManager.hash(password)
 
         const user = new User(
