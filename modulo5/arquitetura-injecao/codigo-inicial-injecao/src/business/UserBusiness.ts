@@ -1,23 +1,18 @@
 import { UserDatabase } from "../database/UserDatabase"
-import { IDeleteUserDTO, IGetUserInputDTO, ILoginInputDTO, ISignupInputDTO, User, USER_ROLES } from "../models/User"
+import { IDeleteUserInputDTO, IEditUserInputDTO, IGetUsersDBDTO, IGetUsersInputDTO, IGetUsersOutputDTO, IGetUsersUser, ILoginInputDTO, ISignupInputDTO, User, USER_ROLES } from "../models/User"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
 
 export class UserBusiness {
-    
+
     constructor(
         private userDatabase: UserDatabase,
-        private idGenerator: IdGenerator,
+        private authenticator:Authenticator,
         private hashManager: HashManager,
-        private authenticator: Authenticator
-    ){
-
-    }
+        private  idGenerator:IdGenerator
+    ){}
     public signup = async (input: ISignupInputDTO) => {
-
-    //const {name, email, password}= input
-
         const name = input.name
         const email = input.email
         const password = input.password
@@ -42,20 +37,15 @@ export class UserBusiness {
             throw new Error("Parâmetro 'password' inválido")
         }
 
-
         
         const userDB = await this.userDatabase.findByEmail(email)
-
 
         if (userDB) {
             throw new Error("E-mail já cadastrado")
         }
-
-        const idGenerator = new IdGenerator()
-        const hashManager = new HashManager()
-
-        const id = idGenerator.generate()
-        const hashedPassword = await hashManager.hash(password)
+       
+        const id = this.idGenerator.generate()
+        const hashedPassword = await this.hashManager.hash(password)
 
         const user = new User(
             id,
@@ -65,18 +55,14 @@ export class UserBusiness {
             USER_ROLES.NORMAL
         )
 
-
         await this.userDatabase.createUser(user)
-
-        
 
         const payload: ITokenPayload = {
             id: user.getId(),
             role: user.getRole()
         }
 
-        const authenticator = new Authenticator()
-        const token = authenticator.generateToken(payload)
+        const token = this.authenticator.generateToken(payload)
 
         const response = {
             message: "Cadastro realizado com sucesso",
@@ -106,10 +92,8 @@ export class UserBusiness {
             throw new Error("Parâmetro 'password' inválido")
         }
 
-
-        //const userDatabase = new UserDatabase()
+       
         const userDB = await this.userDatabase.findByEmail(email)
-
 
         if (!userDB) {
             throw new Error("E-mail não cadastrado")
@@ -123,10 +107,8 @@ export class UserBusiness {
             userDB.role
         )
 
-
-        //const hashManager = new HashManager()
+      
         const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword())
-
 
         if (!isPasswordCorrect) {
             throw new Error("Senha incorreta")
@@ -137,8 +119,7 @@ export class UserBusiness {
             role: user.getRole()
         }
 
-
-       // const authenticator = new Authenticator()
+        
         const token = this.authenticator.generateToken(payload)
 
         const response = {
@@ -149,7 +130,7 @@ export class UserBusiness {
         return response
     }
 
-    public getUsers = async (input: IGetUserInputDTO) => {
+    public getUsers = async (input: IGetUsersInputDTO) => {
         const token = input.token
         const search = input.search || ""
         const order = input.order || "name"
@@ -159,16 +140,14 @@ export class UserBusiness {
 
         const offset = limit * (page - 1)
 
-
-       // const authenticator = new Authenticator()
+        
         const payload = this.authenticator.getTokenPayload(token)
-
 
         if (!payload) {
             throw new Error("Token inválido ou faltando")
         }
 
-        const getUsersInputDB: any = {
+        const getUsersInputDB: IGetUsersDBDTO = {
             search,
             order,
             sort,
@@ -176,9 +155,8 @@ export class UserBusiness {
             offset
         }
 
-
+       
         const usersDB = await this.userDatabase.getUsers(getUsersInputDB)
-
 
         const users = usersDB.map(userDB => {
             const user = new User(
@@ -189,7 +167,7 @@ export class UserBusiness {
                 userDB.role
             )
 
-            const userResponse: any = {
+            const userResponse: IGetUsersUser = {
                 id: user.getId(),
                 name: user.getName(),
                 email: user.getEmail()
@@ -198,19 +176,19 @@ export class UserBusiness {
             return userResponse
         })
 
-        const response: any = {
+        const response: IGetUsersOutputDTO = {
             users
         }
 
         return response
     }
 
-    public deleteUser = async (input: IDeleteUserDTO) => {
+    public deleteUser = async (input: IDeleteUserInputDTO) => {
         const token = input.token
         const idToDelete = input.idToDelete
 
-        const authenticator = new Authenticator()
-        const payload = authenticator.getTokenPayload(token)
+       
+        const payload = this.authenticator.getTokenPayload(token)
 
         if (!payload) {
             throw new Error("Token inválido ou faltando")
@@ -224,14 +202,14 @@ export class UserBusiness {
             throw new Error("Não é possível deletar a própria conta")
         }
 
-        const userDatabase = new UserDatabase()
-        const userDB = await userDatabase.findById(idToDelete)
+       
+        const userDB = await this.userDatabase.findById(idToDelete)
 
         if (!userDB) {
             throw new Error("Usuário a ser deletado não encontrado")
         }
 
-        await userDatabase.deleteUser(idToDelete)
+        await this.userDatabase.deleteUser(idToDelete)
 
         const response = {
             message: "Usuário deletado com sucesso"
@@ -240,7 +218,7 @@ export class UserBusiness {
         return response
     }
 
-    public editUser = async (input: any) => {
+    public editUser = async (input: IEditUserInputDTO) => {
         const {
             token,
             idToEdit,
@@ -257,8 +235,8 @@ export class UserBusiness {
             throw new Error("Parâmetros faltando")
         }
 
-        const authenticator = new Authenticator()
-        const payload = authenticator.getTokenPayload(token)
+     
+        const payload = this.authenticator.getTokenPayload(token)
 
         if (!payload) {
             throw new Error("Token inválido")
@@ -294,9 +272,8 @@ export class UserBusiness {
             }
         }
 
-
+        
         const userDB = await this.userDatabase.findById(idToEdit)
-
 
         if (!userDB) {
             throw new Error("Conta a ser editada não existe")
@@ -314,9 +291,7 @@ export class UserBusiness {
         email && user.setEmail(email)
         password && user.setPassword(password)
 
-
         await this.userDatabase.editUser(user)
-
 
         const response = {
             message: "Edição realizada com sucesso"

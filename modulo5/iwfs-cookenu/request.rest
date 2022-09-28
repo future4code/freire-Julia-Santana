@@ -1,0 +1,14 @@
+
+POST http://localhost:3003/user/signup
+            
+
+POST http://localhost:3003/login
+
+POST http://localhost:3003/recipe
+
+Get http://localhost:3003/recipes/:id
+
+Get http://localhost:3003/user/profile
+
+Get http://localhost:3003/users/id
+
