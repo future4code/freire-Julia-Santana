@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
+
 import { IDeleteUserDTO, IGetUserInputDTO, ILoginInputDTO, ISignupInputDTO } from "../models/User";
 
 export class UserController {
@@ -8,6 +9,7 @@ export class UserController {
     constructor(
         private userBusiness: UserBusiness,
     ){}
+
 
     public signup = async (req: Request, res: Response) => {
         try {
@@ -19,6 +21,7 @@ export class UserController {
 
            
             const response = await this.userBusiness.signup(input)
+
 
             res.status(201).send(response)
         } catch (error) {
@@ -35,6 +38,7 @@ export class UserController {
 
           
             const response = await this.userBusiness.login(input)
+
 
             res.status(200).send(response)
         } catch (error) {
@@ -56,6 +60,7 @@ export class UserController {
            
             const response = await this.userBusiness.getUsers(input)
 
+
             res.status(200).send(response)
         } catch (error) {
             res.status(400).send({ message: error.message })
@@ -72,6 +77,7 @@ export class UserController {
             
             const response = await this.userBusiness.deleteUser(input)
 
+
             res.status(200).send(response)
         } catch (error) {
             res.status(400).send({ message: error.message })
@@ -87,8 +93,10 @@ export class UserController {
                 email: req.body.email,
                 password: req.body.password
             }
+
            
             const response = await this.userBusiness.editUser(input)
+
 
             res.status(200).send(response)
         } catch (error) {
