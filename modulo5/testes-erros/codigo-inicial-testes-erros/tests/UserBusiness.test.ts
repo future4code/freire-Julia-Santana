@@ -82,7 +82,7 @@ describe("Testando a UserBusiness", () => {
                 if (error instanceof BaseError){
                     expect(error.statusCode).toEqual(400)
                     expect(error.message)
-                    .toEqual("Esta faltando o email")
+                    .toEqual("Parâmetro 'email' inválido")
                 }
 
             }
@@ -106,7 +106,7 @@ describe("Testando a UserBusiness", () => {
                 if (error instanceof BaseError){
                     expect(error.statusCode).toEqual(400)
                     expect(error.message)
-                    .toEqual("Somente senha em formato string")
+                    .toEqual("Parâmetro 'password' inválido: mínimo de 6 caracteres")
                 }
 
             }
@@ -176,7 +176,7 @@ test("Retornar erro caso o 'email',  não tiver o @ ", async()=>{
       if (error instanceof BaseError){
           expect(error.statusCode).toEqual(400)
           expect(error.message)
-          .toEqual("Email invalido ")
+          .toEqual("Parâmetro 'email' inválido")
       }
       
     }
@@ -202,7 +202,7 @@ test("Retorna erro caso o email seja uma string vazia",
                 if (error instanceof BaseError){
                     expect(error.statusCode).toEqual(400)
                     expect(error.message)
-                    .toEqual("Adicione o email")
+                    .toEqual("Parâmetro 'email' inválido")
                 }
 
             }
@@ -214,7 +214,7 @@ test("Retorna erro caso o email seja uma string vazia",
             expect.assertions(2)
             try{
                 const input: ILoginInputDTO = {
-                     email: "",
+                     email: "astrodev@gmail.com",
                      password: ""
                  }
 
@@ -225,7 +225,7 @@ test("Retorna erro caso o email seja uma string vazia",
                 if (error instanceof BaseError){
                     expect(error.statusCode).toEqual(400)
                     expect(error.message)
-                    .toEqual("Adicione o 'email', e o 'Password'")
+                    .toEqual("Parâmetro 'password' inválido: mínimo de 6 caracteres")
                 }
 
             }
@@ -237,8 +237,8 @@ test("Retorna erro caso o email seja uma string vazia",
         
             try {
                 const input: ILoginInputDTO = {
-                    email: "",
-                    password: "bananinha"
+                    email: "astrodev@gmail.com",
+                    password: "bana"
                 }
 
         
@@ -272,7 +272,7 @@ test("Retorna erro caso o email seja uma string vazia",
               if (error instanceof BaseError){
                   expect(error.statusCode).toEqual(400)
                   expect(error.message)
-                  .toEqual("Email invalido ")
+                  .toEqual("Parâmetro 'email' inválido")
               }
               
             }

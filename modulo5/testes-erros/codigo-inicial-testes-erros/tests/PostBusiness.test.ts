@@ -56,7 +56,7 @@ describe("Testando a PostBusiness", () => {
           if (error instanceof BaseError){
               expect(error.statusCode).toEqual(400)
               expect(error.message)
-              .toEqual(" Adicione contùdo no 'content' ")
+              .toEqual("Parâmetro 'content' inválido: mínimo de 1 caracteres")
           }
           
         }
@@ -77,7 +77,7 @@ describe("Testando a PostBusiness", () => {
           if (error instanceof BaseError){
               expect(error.statusCode).toEqual(400)
               expect(error.message)
-              .toEqual(" O 'content'  tem que ser maior que 1 caracter")
+              .toEqual("Parâmetro 'content' inválido: mínimo de 1 caracteres")
           }
           
         }
@@ -95,9 +95,9 @@ describe("Testando a PostBusiness", () => {
         } catch (error:unknown) {
     
           if (error instanceof BaseError){
-              expect(error.statusCode).toEqual(400)
+              expect(error.statusCode).toEqual(401)
               expect(error.message)
-              .toEqual(" Caso o token for uma string vazia")
+              .toEqual("Credenciais inválidas" )
           }
           
         }
