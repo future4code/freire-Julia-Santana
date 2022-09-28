@@ -15,12 +15,15 @@ import { Place } from "./exercicio2-polimorfismo";
 export class Residence extends Place {
     constructor(
       protected residentsQuantity: number,
+      private dwellersQuantity: number,
       // Refere-se ao número de moradores da casa
   
       cep: string
     ) {
       super(cep);
     }
+    public getDwellersQuantity(): number {
+        return this.dwellersQuantity
 
     
   }
@@ -30,13 +33,18 @@ export class Residence extends Place {
 
   export class Commerce extends Place {
     constructor(
-      protected floorsQuantity: number,
+        private floorsQuantity: number,
       // Refere-se à quantidade de andares do lugar
   
       cep: string
     ) {
       super(cep);
     }
+    public getFloorsQuantity(): number {
+        return this.floorsQuantity;
+      }
+
+    
   }
 
   //A última é para uma indústria e adicionaremos uma propriedade para guardar a quantidade máquinas 
@@ -44,11 +52,15 @@ export class Residence extends Place {
 
   export class Industry extends Place {
     constructor(
-      protected machinesQuantity: number, 
+      private machinesQuantity: number, 
       // Refere-se à quantidade de máquinas do local 
       
       cep: string
           ) {
           super(cep);
     }
+
+    public getMachinesQuantity(): number {
+        return this.machinesQuantity;
+      }
   }
