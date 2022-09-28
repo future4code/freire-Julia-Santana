@@ -1,5 +1,7 @@
-import Knex from 'knex';
+import dotenv from "dotenv"
 import knex from 'knex';
+
+dotenv.config()
 
 export class BaseDatabase {
 protected static connection = knex({
@@ -10,6 +12,7 @@ protected static connection = knex({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_SCHEMA
+    
   }
 });
 }

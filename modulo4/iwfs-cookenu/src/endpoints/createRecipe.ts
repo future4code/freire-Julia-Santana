@@ -3,40 +3,34 @@ import { Authenticator } from "../services/Authentication"
 import { UserDataBase } from "../data/UserDataBase";
 import {RecipeDatabase} from "../data/recipeDataBase";
 import { User } from "../entities/User";
-import {deleteRecipe} from "./deleteRecipe";
 import { Recipe } from "../entities/recipe";
 import {idGenerator} from "../services/idGenerator"
 
 export async function createRecipe(req: Request, res: Response) {
     try {
         const token = req.headers.authorization as string;
-        const {title, ingredients, description, image_url} = req.body;
+        const {title, ingredients, description} = req.body;
+        const authenticator = new Authenticator();
+        const payload = authenticator.getTokenData(token);
 
-        if (!title || !ingredients || !description || !image_url) {
-            throw new Error("Missing input, title, ingredients, description or image_url");
+        if(!payload){
+            throw new Error("invalid token or missing token ");  
         }
 
-        const authenticator = new Authenticator();
-        const authenticationData = authenticator.getTokenData(token);
-
-        const userDatabase = new UserDataBase();
-        const user = await userDatabase.getUserById(authenticationData.id);
+        if (!title || !ingredients || !description ) {
+            throw new Error("Missing input, title, ingredients, description ");
+        }
 
         const IdGenerator = new idGenerator();
         const id = IdGenerator.generate();
 
-        if (!user) {
-            throw new Error("User not found");
-        }
-
-console.log(id);
-
-        const recipeDatabase = new RecipeDatabase();
-       const recipe = new Recipe(id, title, ingredients, description, image_url, user.getId() )
+       const recipeDatabase = new RecipeDatabase();
+       const recipe = new Recipe(id, title, ingredients, description, payload.id )
        await recipeDatabase.createRecipe(recipe);
 
         res.status(200).send({
-            message: "Recipe created successfully",
+            message: "Recipe created successfull", 
+            recipe
         });
     } catch (err) {
         if (err instanceof Error) {
