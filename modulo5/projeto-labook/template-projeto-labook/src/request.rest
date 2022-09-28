@@ -1,0 +1,27 @@
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Beltrano",
+    "email": "beltrano2@gmail.com",
+    "password": "abc123"
+}
+
+### login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "beltrano2@gmail.com",
+    "password": "abc123"
+}
+
+### CreatePost
+
+POST http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3MWJlYjNkLTZiN2YtNDMwNS1iZGIxLTgzOGJmMWNiODU5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjM5NjA2NzcsImV4cCI6MTY2NDA0NzA3N30.Xyre1w24dpkJyskVYM6-MjsmHQi8nCJhWr7pExtkeac 
+Content-Type: application/json
+
+{
+    "content":"Receita"
+}
