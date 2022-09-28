@@ -6,6 +6,7 @@ import { IdGenerator } from "../services/IdGenerator"
 
 export class UserBusiness {
 
+
     
     constructor(
         private userDatabase: UserDatabase,
@@ -16,6 +17,7 @@ export class UserBusiness {
 
     }
     public signup = async (input: ISignupInputDTO) => {
+
     //const {name, email, password}= input
 
         const name = input.name
@@ -42,7 +44,6 @@ export class UserBusiness {
             throw new Error("Parâmetro 'password' inválido")
         }
 
-        //const userDatabase = new UserDatabase()
         const userDB = await this.userDatabase.findByEmail(email)
 
         if (userDB) {
@@ -64,6 +65,7 @@ export class UserBusiness {
         )
 
         await this.userDatabase.createUser(user)
+
 
         const payload: ITokenPayload = {
             id: user.getId(),
@@ -104,6 +106,7 @@ export class UserBusiness {
        
         const userDB = await this.userDatabase.findByEmail(email)
 
+
         if (!userDB) {
             throw new Error("E-mail não cadastrado")
         }
@@ -118,6 +121,7 @@ export class UserBusiness {
 
         const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword())
 
+
         if (!isPasswordCorrect) {
             throw new Error("Senha incorreta")
         }
@@ -127,7 +131,9 @@ export class UserBusiness {
             role: user.getRole()
         }
 
+
         const token = this.authenticator.generateToken(payload)
+
 
         const response = {
             message: "Login realizado com sucesso",
@@ -146,9 +152,9 @@ export class UserBusiness {
         const page = Number(input.page) || 1
 
         const offset = limit * (page - 1)
-
-       // const authenticator = new Authenticator()
+        
         const payload = this.authenticator.getTokenPayload(token)
+
 
         if (!payload) {
             throw new Error("Token inválido ou faltando")
@@ -162,8 +168,8 @@ export class UserBusiness {
             offset
         }
 
-        //const userDatabase = new UserDatabase()
         const usersDB = await this.userDatabase.getUsers(getUsersInputDB)
+
 
         const users = usersDB.map(userDB => {
             const user = new User(

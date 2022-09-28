@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
+
 import { IDeleteUserDTO, IGetUserInputDTO, ILoginInputDTO, ISignupInputDTO } from "../models/User";
 
 export class UserController {
@@ -16,7 +17,6 @@ export class UserController {
                 email: req.body.email,
                 password: req.body.password
             }
-
            
             const response = await this.userBusiness.signup(input)
 
@@ -32,7 +32,6 @@ export class UserController {
                 email: req.body.email,
                 password: req.body.password
             }
-
           
             const response = await this.userBusiness.login(input)
 
@@ -52,7 +51,6 @@ export class UserController {
                 limit: req.query.limit as string,
                 page: req.query.page as string
             }
-
            
             const response = await this.userBusiness.getUsers(input)
 
@@ -87,6 +85,7 @@ export class UserController {
                 email: req.body.email,
                 password: req.body.password
             }
+
            
             const response = await this.userBusiness.editUser(input)
 
