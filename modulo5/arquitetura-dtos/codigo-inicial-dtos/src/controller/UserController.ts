@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
+
 import { IDeleteUserDTO, IGetUserInputDTO, ILoginInputDTO, ISignupInputDTO } from "../models/User";
+
 
 export class UserController {
     public signup = async (req: Request, res: Response) => {
