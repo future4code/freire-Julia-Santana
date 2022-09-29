@@ -33,7 +33,7 @@ public getPosts = async (req: Request, res: Response) => {
 
         const response = await this.postBusiness.getPosts(input)
         res.status(200).send(response)
-    } catch (error) {
+    } catch (error:any) {
         res.status(400).send({ message: error.message })
     }
 }
@@ -47,7 +47,7 @@ public deletePost = async (req: Request, res: Response) => {
 
         const response = await this.postBusiness.deletePost(input)
         res.status(200).send(response)
-    } catch (error) {
+    } catch (error:any) {
         res.status(400).send({ message: error.message })
     }
 }
@@ -61,7 +61,7 @@ public addLike = async (req: Request, res: Response) => {
 
         const response = await this.postBusiness.addLike(input)
         res.status(200).send(response)
-    } catch (error) {
+    } catch (error:any) {
         res.status(400).send({ message: error.message })
     }
 }
@@ -75,7 +75,7 @@ public removeLike = async (req: Request, res: Response) => {
 
         const response = await this.postBusiness.removeLike(input)
         res.status(200).send(response)
-    } catch (error) {
+    } catch (error:any) {
         res.status(400).send({ message: error.message })
     }
 }
