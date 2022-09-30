@@ -1,5 +1,5 @@
 import { ShowDatabase } from "../database/ShowDatabase"
-import { ICreateShowInputDTO, ICreateShowOutputDTO, IGetShowInputDTO, IGetShowOutputDTO, Show } from "../models/Show"
+import { ICreateReserva, ICreateShowInputDTO, ICreateShowOutputDTO, IGetShowInputDTO, IGetShowOutputDTO, Show } from "../models/Show"
 import { USER_ROLES } from "../models/User"
 import { Authenticator } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
@@ -63,6 +63,14 @@ export class ShowBusiness {
     return response
 
        } 
+
+       public createReserva = async ( input:ICreateReserva)=>{
+     
+            
+         }
+    
+         //return response
+    
     }
 
     

@@ -30,6 +30,12 @@ export interface IGetShowInputDTO {
 export interface IGetShowOutputDTO {
     show: Show[]
 }
+
+export interface ICreateReserva{
+    token:string,
+    id: string,
+    tickets:number
+}
 export class Show {
     constructor(
         private id: string,
