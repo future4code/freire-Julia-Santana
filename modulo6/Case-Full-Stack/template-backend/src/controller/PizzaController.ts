@@ -1,71 +1,35 @@
-import { PizzaDatabase } from "../database/PizzaDataBase"
-import { IGetPizzasOutputDTO, Pizza } from "../models/Pizza"
-import { IdGenerator } from "../services/IdGenerator"
+import { Request, Response } from "express"
+import { PizzaBusiness } from "../business/PizzaBusiness"
+import { BaseError } from "../errors/BaseError"
 
-export class PizzaBusiness {
+export class PizzaController {
     constructor(
-        private pizzaDatabase: PizzaDatabase,
-        private idGenerator: IdGenerator
+        private pizzaBusiness: PizzaBusiness
     ) {}
 
-    public getPizzas = async (): Promise<IGetPizzasOutputDTO> => {
-
-        const pizzasDB = await this.pizzaDatabase.getPizzas()
-
-        const pizzas: Pizza[] = []
-
-        for (let pizzaDB of pizzasDB) {
-            const pizza = new Pizza(
-                pizzaDB.name,
-                pizzaDB.price,
-                []
-            )
-            
-            const ingredients = await 
-                this.pizzaDatabase.getIngredients(pizzaDB.name)
-            
-            pizza.setIngredients(ingredients)
-
-            pizzas.push(pizza)
+    public getPizzas = async (req: Request, res: Response) => {
+        try {
+            const response = await this.pizzaBusiness.getPizzas()
+            res.status(200).send(response)
+        } catch (error) {
+            console.log(error)
+            if (error instanceof BaseError) {
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+            res.status(500).send({ message: "Erro inesperado ao buscar pizzas" })
         }
-
-        const response: IGetPizzasOutputDTO = {
-            message: "Pizzas retornadas com sucesso",
-            pizzas: pizzas.map((pizza) => ({
-                name: pizza.getName(),
-                price: pizza.getPrice(),
-                ingredients: pizza.getIngredients()
-            }))
-        }
-
-        return response
     }
 
-    public getPizzasV2 = async () => {
-
-        const rawPizzasFormatted = await this.pizzaDatabase.getPizzasFormatted()
-
-        const pizzas: any = []
-
-        for (let rawPizza of rawPizzasFormatted) {
-            const pizzaAlreadyOnArray = pizzas
-                .find((pizza: any) => pizza.name === rawPizza.name)
-
-            if (pizzaAlreadyOnArray) {
-                pizzaAlreadyOnArray.ingredients.push(rawPizza.ingredient_name)
-            } else {
-                const pizza = {
-                    name: rawPizza.name,
-                    price: rawPizza.price,
-                    ingredients: [ rawPizza.ingredient_name ]
-                }
-
-                pizzas.push(pizza)
+    public getPizzasV2 = async (req: Request, res: Response) => {
+        try {
+            const response = await this.pizzaBusiness.getPizzasV2()
+            res.status(200).send(response)
+        } catch (error) {
+            console.log(error)
+            if (error instanceof BaseError) {
+                return res.status(error.statusCode).send({ message: error.message })
             }
-        }
-
-        return {
-            pizzas
+            res.status(500).send({ message: "Erro inesperado ao buscar pizzas" })
         }
     }
 }
