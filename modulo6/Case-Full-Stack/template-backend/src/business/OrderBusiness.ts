@@ -1,4 +1,4 @@
-import { OrderDatabase } from "../database/OrderDataDataBase"
+import { OrderDatabase } from "../database/OrderDatabase"
 import { NotFoundError } from "../errors/NotFoundError"
 import { ParamsError } from "../errors/ParamsError"
 import { ICreateOrderInputDTO, ICreateOrderOutputDTO, IGetOrdersOutputDTO, IOrderItem, IOrderItemDB, Order } from "../models/Order"

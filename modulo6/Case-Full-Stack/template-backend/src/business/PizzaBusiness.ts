@@ -1,4 +1,4 @@
-import { PizzaDatabase } from "../database/PizzaDataBase"
+import { PizzaDatabase } from "../database/PizzaDatabase"
 import { IGetPizzasOutputDTO, Pizza } from "../models/Pizza"
 import { IdGenerator } from "../services/IdGenerator"
 
