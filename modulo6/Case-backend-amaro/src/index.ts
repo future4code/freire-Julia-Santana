@@ -1,7 +1,10 @@
-import path from "path";
 import express from 'express'
 import cors from 'cors'
 import dotenv from "dotenv"
+
+import {productRouter } from "../src/Router/ProductRouter"
+import { ppid } from 'node:process'
+
 
 dotenv.config()
 
@@ -14,18 +17,4 @@ app.listen(process.env.PORT || 3003, () => {
 })
 
 
-const fs = require("fs");
-
-function readFileJson(file: string){
-    try {
-        let content = fs.readFileSync(file, "utf-8");
-        return JSON.parse(content);
-    } catch (error) {
-        console.log(error);
-        
-    }
-}
-
-const lendoJson = readFileJson(
-    path.resolve(__dirname, "products.json")
-);
+app.use("/product", productRouter);

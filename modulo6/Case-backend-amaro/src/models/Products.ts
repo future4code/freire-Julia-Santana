@@ -28,10 +28,24 @@ export class Products {
 
 }
 
-export interface IGetPizzasOutputDTO {
+export interface IGetProductOutputDTO {
     message: string,
     products: {
         name: string,
         tags: string,
     }[]
+}
+
+export interface IGetProductDTO{
+    name:string,
+    tags:string
+}
+
+export interface IProductMessageDTO {
+    message: string,
+
+}
+
+export interface IGetProductArrayOutputDTO {
+    product: Products[]
 }
