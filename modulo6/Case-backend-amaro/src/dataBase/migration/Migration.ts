@@ -3,9 +3,10 @@ import { ProductDatabase } from "../ProductDataBase"
 import { products, products_tags, tags } from "./Data"
 
 
-class Migrations extends BaseDatabase {
+export class Migrations extends BaseDatabase {
     execute = async () => {
         try {
+          
             console.log("Creating tables...")
             await this.createTables()
             console.log("Tables created successfully.")
@@ -20,13 +21,13 @@ class Migrations extends BaseDatabase {
             console.log(error.message)
         } finally {
             console.log("Ending connection...")
-            this.getConnection().destroy()
+            BaseDatabase.connection.destroy()
             console.log("Connection closed graciously.")
         }
     }
 
     createTables = async () => {
-        await this.getConnection().raw(`
+        await BaseDatabase.connection.raw(`
         DROP TABLE IF EXISTS ${ProductDatabase.TABLE_PRODUCTS_TAGS};
         DROP TABLE IF EXISTS ${ProductDatabase.TABLE_PRODUCTS};
         DROP TABLE IF EXISTS ${ProductDatabase.TABLE_TAGS};
@@ -49,16 +50,20 @@ class Migrations extends BaseDatabase {
     }
 
     insertData = async () => {
-        await this.getConnection().(ProductDatabase.TABLE_PRODUCTS)
-            .insert(products)
+        await BaseDatabase
+        .connection(ProductDatabase.TABLE_PRODUCTS)
+        .insert(products)
 
-        await this.getConnection().(ProductDatabase.TABLE_TAGS)
-            .insert(tags)
+        await BaseDatabase
+        .connection(ProductDatabase.TABLE_TAGS)
+        .insert(tags)
 
-        await this.getConnection().(ProductDatabase.TABLE_PRODUCTS_TAGS)
+        await BaseDatabase
+            .connection(ProductDatabase.TABLE_PRODUCTS_TAGS)
             .insert(products_tags)
     }
 }
 
-// const migrations = new Migrations()
-// migrations.execute()
+
+            const migrations = new Migrations()
+            migrations.execute()

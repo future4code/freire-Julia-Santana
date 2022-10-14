@@ -1,17 +1,19 @@
+import { Migrations } from "../dataBase/migration/Migration";
 import { ProductDatabase } from "../dataBase/ProductDataBase";
 import { NotFoundError } from "../errors/NoutFoundError";
 import { ParamsError } from "../errors/ParamsError";
 import { IdGenerator } from "../services/IdGenerator";
+
 
 export class ProductBusiness {
 
     constructor(
         private productDatabase: ProductDatabase,
         private idGenerator: IdGenerator,
-        private migrations: Migrations
+      //  private migrations: Migrations
     ) {}
 
-        //*****   SELECIONAR TODOS OS PRODUTOS   *****
+    // selecionar todos os produtos
         public selectAllProducts = async () => {
             const result = await this.productDatabase.fetchAllProducts();
             const products = [];
@@ -32,7 +34,7 @@ export class ProductBusiness {
             return products;
         };
 
-        //*****   SELECIONAR TODOS OS PRODUTOS POR BUSCA   *****
+        // selecionar todos os produtos por busca
         public selectAllProductsByQuery = async (search:string) => {
             const result = await this.productDatabase.selectProductByName(search);
             if (result.length === 0) {
@@ -60,7 +62,7 @@ export class ProductBusiness {
             return products;
         };
 
-        //*****   SELECIONAR TODOS OS PRODUTOS POR TAGS   *****
+        // selecionar todos os produtos por tag
         public selectAllProductsByTags = async (search:string) => {
             if (!search) {
                 throw new ParamsError;
@@ -93,7 +95,7 @@ export class ProductBusiness {
             return products;
         };
 
-        //*****   SELECIONAR O PRODUTO PELA SUA ID   *****
+        // selecionar todos os produtos por id
         public selectProductById =  async (id:string) => {
             if (!id || id === ":id") {
                 throw new ParamsError;
@@ -113,7 +115,7 @@ export class ProductBusiness {
             return products;
         };
 
-        //*****   POPULATE   *****
+        //populate
         public populate = async () => {
             const migrations = new Migrations();
             migrations.execute();
