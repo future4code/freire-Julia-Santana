@@ -7,6 +7,7 @@ import PizzaCard from "../components/PizzaCard"
 export const ContainerSection = styled.section`
     ul {
         display: flex;
+        
     }
 `
 

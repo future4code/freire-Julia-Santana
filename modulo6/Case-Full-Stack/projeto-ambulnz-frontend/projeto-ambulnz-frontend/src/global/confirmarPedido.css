@@ -1,0 +1,39 @@
+.containerSection{
+    border: 1px solid #ec930d;
+     width: 350px;
+     height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    position:relative;
+    margin-top: 20px;
+    transform: translate(-200%, -2%);
+
+}
+
+.BotaoConfirmarPedido{
+    background: #ce0606;
+    border: 1px solid #ce0606 ;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    align-items: center;
+    margin-left: 6px;
+    margin-bottom: 6px; 
+    color: aliceblue;
+    margin-right: 6px;
+
+}
+
+.total{
+    margin-left: 10px;
+}
+
+.pedidos{
+    margin-left: 10px;
+}
+
+.h1{
+    text-align: center;
+}

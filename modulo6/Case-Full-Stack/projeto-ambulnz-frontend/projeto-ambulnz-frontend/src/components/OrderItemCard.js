@@ -1,15 +1,12 @@
-import styled from "styled-components"
-
-export const ContainerLi = styled.li`
-    display: flex;
-`
+import carrinhoPedido from "../global/carrinhoPedido.css"
 
 function OrderItemCard(props) {
     const { pizza, removeFromCart } = props
 
     return (
-        <ContainerLi>
-            <p>
+        <div className="orderItem">
+            
+            <p className="texto">
                 Pizza {pizza.name}
                 - {pizza.price.toLocaleString(
                     'pt-br',
@@ -17,8 +14,8 @@ function OrderItemCard(props) {
                 )}
                 {" "} x {pizza.quantity}
             </p>
-            <button onClick={() => removeFromCart(pizza)}>Remover item</button>
-        </ContainerLi>
+            <button  className="Button" onClick={() => removeFromCart(pizza)}>Remover item</button>
+        </div>
     )
 }
 

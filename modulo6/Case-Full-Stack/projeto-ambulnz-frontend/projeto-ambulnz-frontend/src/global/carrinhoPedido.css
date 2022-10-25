@@ -1,0 +1,35 @@
+.orderItem{
+background:#ffffff;
+border: 1px solid #ec930d ;
+border-radius: 5px;
+width: 200px;
+height: 100px;
+margin-bottom: 10px;
+margin-right: 10px;
+margin-left: 10px;
+margin-top: 10px;
+}
+
+.Button{
+    background: #ce0606;
+    border: 1px solid #ce0606 ;
+    border-radius: 5px;
+    width: 100px;
+    height: 25px;
+    align-items: center;
+    margin-left: 6px;
+    margin-bottom: 6px; 
+    color: aliceblue;
+    margin-right: 6px;
+
+
+   
+}
+
+.texto{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    text-align: center;
+} 
+

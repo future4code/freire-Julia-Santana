@@ -6,9 +6,14 @@ import { BASE_URL } from "./constants";
 import OrderSummary from "./screens/OrderSummary";
 import PizzasMenu from "./screens/PizzasMenu";
 
+
+
 export const ContainerMain = styled.main`
     display: flex;
+    
 `
+
+
 
 function App() {
     const [ cart, setCart ] = useState([])
@@ -122,6 +127,7 @@ function App() {
 
     return (
         <ContainerMain>
+            <header />
             <PizzasMenu addToCart={addToCart} />
             <OrderSummary
                 cart={cart}
