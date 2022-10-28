@@ -5,21 +5,25 @@ import OrderSuccessPopup from "./components/OrderSuccessPopup";
 import { BASE_URL } from "./constants";
 import OrderSummary from "./screens/OrderSummary";
 import PizzasMenu from "./screens/PizzasMenu";
-
+import app from "./global/app.css"
 
 
 export const ContainerMain = styled.main`
     display: flex;
-    
+    background-image: url("https://static.poder360.com.br/2022/07/pizza-marguerita-scaled.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
 `
 
-
-
 function App() {
-    const [ cart, setCart ] = useState([])
-    const [ total, setTotal ] = useState(0)
-    
-    const [ orderSuccessPopupState, setOrderSuccessPopupState] = useState({
+    const [cart, setCart] = useState([])
+    const [total, setTotal] = useState(0)
+
+    const [orderSuccessPopupState, setOrderSuccessPopupState] = useState({
         isActive: false,
         summary: {
             id: null,
@@ -99,7 +103,7 @@ function App() {
             const body = {
                 pizzas: cart
             }
-    
+
             const res = await axios.post(`${BASE_URL}/orders`, body)
 
             setOrderSuccessPopupState({
@@ -127,21 +131,28 @@ function App() {
 
     return (
         <ContainerMain>
-            <header />
-            <PizzasMenu addToCart={addToCart} />
-            <OrderSummary
-                cart={cart}
-                removeFromCart={removeFromCart}
-                total={total}
-                confirmOrder={confirmOrder}
-            />
-            { orderSuccessPopupState.isActive
+            <header className="Header"> Pizzaria Ambulz </header>
+            <div className="card">
+                <div className="pizzaMenu">
+                <PizzasMenu addToCart={addToCart} />
+                </div>
+                <OrderSummary
+                    cart={cart}
+                    removeFromCart={removeFromCart}
+                    total={total}
+                    confirmOrder={confirmOrder}
+                />
+                
+            </div>
+            {orderSuccessPopupState.isActive
                 && <OrderSuccessPopup
-                        order={orderSuccessPopupState.summary}
-                        closePopup={closePopup}
-                    />
+                    order={orderSuccessPopupState.summary}
+                    closePopup={closePopup}
+                />
             }
+
         </ContainerMain>
+        
     );
 }
 

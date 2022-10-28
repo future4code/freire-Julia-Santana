@@ -7,8 +7,9 @@ import PizzaCard from "../components/PizzaCard"
 export const ContainerSection = styled.section`
     ul {
         display: flex;
-        
+        align-items: center;        
     }
+
 `
 
 function PizzasMenu(props) {

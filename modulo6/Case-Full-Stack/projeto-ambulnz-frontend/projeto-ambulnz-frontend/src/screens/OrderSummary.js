@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import OrderItemCard from "../components/OrderItemCard";
 import confirmarPedido from "../global/confirmarPedido.css"
 
@@ -23,11 +22,11 @@ function OrderSummary(props) {
             <h2 className="total">
                 Total: {
                     total.toLocaleString(
-                    'pt-br',
-                    { style: 'currency', currency: 'USD' }
-                )}
+                        'pt-br',
+                        { style: 'currency', currency: 'USD' }
+                    )}
             </h2>
-            <button  className="BotaoConfirmarPedido" onClick={confirmOrder}>Confirmar pedido</button>
+            <button className="BotaoConfirmarPedido" onClick={confirmOrder}>Confirmar pedido</button>
         </div>
     )
 }
