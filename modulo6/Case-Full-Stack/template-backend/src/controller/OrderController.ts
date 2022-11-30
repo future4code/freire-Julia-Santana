@@ -23,6 +23,7 @@ export class OrderController {
             }
             res.status(500).send({ message: "Erro inesperado ao criar pedido" })
         }
+
     }
 
     public getOrders = async (req: Request, res: Response) => {

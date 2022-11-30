@@ -6,4 +6,5 @@ export class NotFoundError extends BaseError {
     ) {
         super(404, message)
     }
+
 }

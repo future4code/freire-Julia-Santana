@@ -3,7 +3,6 @@ export class PingBusiness {
         const response = {
             message: "Pong!"
         }
-        
         return response
     }
 }

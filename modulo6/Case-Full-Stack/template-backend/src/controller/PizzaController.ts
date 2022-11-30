@@ -18,6 +18,7 @@ export class PizzaController {
             }
             res.status(500).send({ message: "Erro inesperado ao buscar pizzas" })
         }
+    
     }
 
     public getPizzasV2 = async (req: Request, res: Response) => {

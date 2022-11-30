@@ -5,4 +5,5 @@ export class BaseError extends Error {
     ) {
         super(message)
     }
+
 }

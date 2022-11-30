@@ -39,12 +39,4 @@ export class PizzaDatabase extends BaseDatabase {
 
         return result
     }
-
-    // public createUser = async (user: User): Promise<void> => {
-    //     const userDB = this.toUserDBModel(user)
-
-    //     await BaseDatabase
-    //         .connection(UserDatabase.TABLE_USERS)
-    //         .insert(userDB)
-    // }
 }

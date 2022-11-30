@@ -11,7 +11,6 @@ export class PizzaBusiness {
     public getPizzas = async (): Promise<IGetPizzasOutputDTO> => {
 
         const pizzasDB = await this.pizzaDatabase.getPizzas()
-
         const pizzas: Pizza[] = []
 
         for (let pizzaDB of pizzasDB) {

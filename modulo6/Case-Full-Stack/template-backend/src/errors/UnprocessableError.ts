@@ -6,4 +6,5 @@ export class UnprocessableError extends BaseError {
     ) {
         super(422, message)
     }
+
 }

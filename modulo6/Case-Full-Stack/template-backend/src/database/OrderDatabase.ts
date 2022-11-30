@@ -44,5 +44,5 @@ export class OrderDatabase extends BaseDatabase {
             .where({ order_id: orderId })
 
         return result
-    }
+     }
 }

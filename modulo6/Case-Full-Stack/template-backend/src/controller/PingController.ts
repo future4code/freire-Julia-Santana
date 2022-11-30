@@ -19,4 +19,5 @@ export class PingController {
             res.status(500).send({ message: "Erro inesperado no endpoint ping" })
         }
     }
+
 }

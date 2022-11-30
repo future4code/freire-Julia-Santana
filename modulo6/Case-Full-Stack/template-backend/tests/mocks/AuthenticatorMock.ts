@@ -33,5 +33,4 @@ export class AuthenticatorMock {
                 return null
         }
     }
-
 }

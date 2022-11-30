@@ -6,4 +6,5 @@ export class ConflictError extends BaseError {
     ) {
         super(409, message)
     }
+
 }

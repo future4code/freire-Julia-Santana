@@ -6,4 +6,5 @@ export class AuthorizationError extends BaseError {
     ) {
         super(403, message)
     }
+
 }

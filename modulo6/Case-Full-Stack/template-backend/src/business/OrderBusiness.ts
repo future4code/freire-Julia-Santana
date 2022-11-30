@@ -4,6 +4,7 @@ import { ParamsError } from "../errors/ParamsError"
 import { ICreateOrderInputDTO, ICreateOrderOutputDTO, IGetOrdersOutputDTO, IOrderItem, IOrderItemDB, Order } from "../models/Order"
 import { IdGenerator } from "../services/IdGenerator"
 
+
 export class OrderBusiness {
     constructor(
         private orderDatabase: OrderDatabase,

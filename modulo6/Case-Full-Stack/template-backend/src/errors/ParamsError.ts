@@ -6,4 +6,5 @@ export class ParamsError extends BaseError {
     ) {
         super(400, message)
     }
+
 }

@@ -1,7 +1,5 @@
 import { IIngredientsDB, IPizzaDB, IPizzasIngredientsDB } from "../../models/Pizza";
 
-// seeds
-
 export const pizzasSeed: IPizzaDB[] = [
     {
         "name": "Margherita",

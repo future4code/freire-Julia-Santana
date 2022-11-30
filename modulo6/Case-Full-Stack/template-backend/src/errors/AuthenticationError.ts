@@ -6,4 +6,5 @@ export class AuthenticationError extends BaseError {
     ) {
         super(401, message)
     }
+
 }
