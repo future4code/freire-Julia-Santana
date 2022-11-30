@@ -21,5 +21,4 @@ function OrderItemCard(props) {
         </div>
     )
 }
-
 export default OrderItemCard

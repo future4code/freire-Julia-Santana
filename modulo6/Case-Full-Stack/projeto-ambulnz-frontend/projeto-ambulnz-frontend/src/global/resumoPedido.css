@@ -10,8 +10,6 @@
     width: 450px;
     margin-left: 100px;
     background: #ffffff;
-
-
 }
 
 .orderItemCard {
@@ -19,7 +17,6 @@
     width: 100%;
     height: 100%;
     margin-left: 10px;
-
 }
 
 .resumoPedido {
@@ -48,5 +45,4 @@
     cursor: pointer;
     font-weight: bold;
     background-color: red;
-
 }

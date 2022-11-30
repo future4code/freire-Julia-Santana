@@ -30,5 +30,4 @@ function OrderSummary(props) {
         </div>
     )
 }
-
 export default OrderSummary

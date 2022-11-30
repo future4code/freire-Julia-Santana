@@ -1,7 +1,5 @@
 import resumoPedido from "../global/resumoPedido.css"
 
-
-
 function OrderSuccessPopup(props) {
     const { order, closePopup } = props
 

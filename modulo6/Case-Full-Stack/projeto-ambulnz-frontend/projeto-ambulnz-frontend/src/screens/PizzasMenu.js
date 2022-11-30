@@ -43,5 +43,4 @@ function PizzasMenu(props) {
         </ContainerSection>
     )
 }
-
 export default PizzasMenu

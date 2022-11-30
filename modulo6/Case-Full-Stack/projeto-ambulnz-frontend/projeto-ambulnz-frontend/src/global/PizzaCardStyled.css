@@ -8,7 +8,6 @@
     margin-left: 6px;
     margin-bottom: 6px;
     color: aliceblue;
-
 }
 
 .container {
@@ -24,7 +23,6 @@
     position: relative;
     transform: translate(-0%, -0%);
     background: #ffffff;
-
 }
 
 .container:hover {

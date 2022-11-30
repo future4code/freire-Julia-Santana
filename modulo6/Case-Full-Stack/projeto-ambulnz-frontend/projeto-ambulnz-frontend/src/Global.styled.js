@@ -9,14 +9,10 @@ body,
     padding: 0;
     box-sizing: border-box;
     width: 100%;
-   
 }
 
 ul, li {
     list-style-type: none;
 }
-
-
-
 `
 

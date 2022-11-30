@@ -18,7 +18,6 @@ export const ContainerMain = styled.main`
     width: 100%;
     height: 100%;
 `
-
 function App() {
     const [cart, setCart] = useState([])
     const [total, setTotal] = useState(0)

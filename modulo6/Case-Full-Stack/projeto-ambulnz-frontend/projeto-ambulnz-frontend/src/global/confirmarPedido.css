@@ -10,7 +10,6 @@
     margin-top: 85px;
     transform: translate(-110%, -12%);
     background: #ffffff;
-    /* overflow-y: auto;     */
 }
 
 .BotaoConfirmarPedido {
@@ -24,7 +23,6 @@
     margin-bottom: 6px;
     color: aliceblue;
     margin-right: 6px;
-
 }
 
 .total {

@@ -12,6 +12,7 @@ function PizzaCard(props) {
                     { style: 'currency', currency: 'USD' }
                 )}
             </p>
+            
             <p className="igredientes">
                 {pizza.ingredients.map((item) => {
                     return (
