@@ -1,0 +1,53 @@
+.button {
+    background: #ce0606;
+    border: 1px solid #ce0606;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    align-items: center;
+    margin-left: 6px;
+    margin-bottom: 6px;
+    color: aliceblue;
+}
+
+.container {
+    border: 1px solid #ec930d;
+    margin: 1em;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin-top: 455px;
+    position: relative;
+    transform: translate(-0%, -0%);
+    background: #ffffff;
+}
+
+.container:hover {
+    top: -20px;
+    box-shadow: 0 4px 6px #ec930d;
+}
+
+.card-price {
+    text-align: center;
+    color: red;
+}
+
+.name {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.igredientes {
+    text-align: center;
+}
+
+.imagemCard {
+    width: 45%;
+    align-items: center;
+    margin-left: 30%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+}

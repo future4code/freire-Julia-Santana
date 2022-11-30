@@ -25,6 +25,7 @@
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
     "concat-map": "^0.0.1",
+    "create-react-app": "^5.0.1",
     "cross-spawn": "^7.0.3",
     "debug": "^4.3.4",
     "deep-is": "^0.1.4",

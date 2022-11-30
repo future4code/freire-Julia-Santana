@@ -5,8 +5,17 @@ import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
 
 export class UserBusiness {
-    public signup = async (input: ISignupInputDTO) => {
 
+    
+    constructor(
+        private userDatabase: UserDatabase,
+        private idGenerator: IdGenerator,
+        private hashManager: HashManager,
+        private authenticator: Authenticator
+    ){
+
+    }
+    public signup = async (input: ISignupInputDTO) => {
     //const {name, email, password}= input
 
         const name = input.name
@@ -33,8 +42,8 @@ export class UserBusiness {
             throw new Error("Parâmetro 'password' inválido")
         }
 
-        const userDatabase = new UserDatabase()
-        const userDB = await userDatabase.findByEmail(email)
+        //const userDatabase = new UserDatabase()
+        const userDB = await this.userDatabase.findByEmail(email)
 
         if (userDB) {
             throw new Error("E-mail já cadastrado")
@@ -54,7 +63,7 @@ export class UserBusiness {
             USER_ROLES.NORMAL
         )
 
-        await userDatabase.createUser(user)
+        await this.userDatabase.createUser(user)
 
         const payload: ITokenPayload = {
             id: user.getId(),
@@ -92,8 +101,8 @@ export class UserBusiness {
             throw new Error("Parâmetro 'password' inválido")
         }
 
-        const userDatabase = new UserDatabase()
-        const userDB = await userDatabase.findByEmail(email)
+       
+        const userDB = await this.userDatabase.findByEmail(email)
 
         if (!userDB) {
             throw new Error("E-mail não cadastrado")
@@ -107,8 +116,7 @@ export class UserBusiness {
             userDB.role
         )
 
-        const hashManager = new HashManager()
-        const isPasswordCorrect = await hashManager.compare(password, user.getPassword())
+        const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword())
 
         if (!isPasswordCorrect) {
             throw new Error("Senha incorreta")
@@ -119,8 +127,7 @@ export class UserBusiness {
             role: user.getRole()
         }
 
-        const authenticator = new Authenticator()
-        const token = authenticator.generateToken(payload)
+        const token = this.authenticator.generateToken(payload)
 
         const response = {
             message: "Login realizado com sucesso",
@@ -140,8 +147,8 @@ export class UserBusiness {
 
         const offset = limit * (page - 1)
 
-        const authenticator = new Authenticator()
-        const payload = authenticator.getTokenPayload(token)
+       // const authenticator = new Authenticator()
+        const payload = this.authenticator.getTokenPayload(token)
 
         if (!payload) {
             throw new Error("Token inválido ou faltando")
@@ -155,8 +162,8 @@ export class UserBusiness {
             offset
         }
 
-        const userDatabase = new UserDatabase()
-        const usersDB = await userDatabase.getUsers(getUsersInputDB)
+        //const userDatabase = new UserDatabase()
+        const usersDB = await this.userDatabase.getUsers(getUsersInputDB)
 
         const users = usersDB.map(userDB => {
             const user = new User(
@@ -272,8 +279,8 @@ export class UserBusiness {
             }
         }
 
-        const userDatabase = new UserDatabase()
-        const userDB = await userDatabase.findById(idToEdit)
+        //const userDatabase = new UserDatabase()
+        const userDB = await this.userDatabase.findById(idToEdit)
 
         if (!userDB) {
             throw new Error("Conta a ser editada não existe")
@@ -291,7 +298,7 @@ export class UserBusiness {
         email && user.setEmail(email)
         password && user.setPassword(password)
 
-        await userDatabase.editUser(user)
+        await this.userDatabase.editUser(user)
 
         const response = {
             message: "Edição realizada com sucesso"
